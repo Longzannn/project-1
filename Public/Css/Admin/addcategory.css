@@ -1,0 +1,14 @@
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    padding: 10px 0;
+    font-weight: bold;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.btn.btn-light a {
+    color: #000;
+}
