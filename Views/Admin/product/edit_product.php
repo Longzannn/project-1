@@ -180,7 +180,7 @@
                                                 class="form-control" placeholder="">
                                         </div>
                                         <div class="form-group">
-                                            <label>Kích thước sản phẩm</label>
+                                            <label>Số lượng sản phẩm (Size 38, 39, 40, 41, 42)</label>
                                             <input value="<?= $prd['prd_size'] ?>" required name="prd_size"
                                                 class="form-control" placeholder="">
                                         </div>

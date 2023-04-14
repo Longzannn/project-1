@@ -7,6 +7,16 @@ function view_cart() {
     $cate = mysqli_query($connect, "SELECT * FROM category ORDER BY cat_id ASC");
     if(isset($_SESSION['cart'])) {
         foreach($_SESSION['cart'] as $prd_id => $value) {
+            // Kiểm tra nếu có giá trị size được lưu trong session
+            if(isset($_SESSION['cart'][$prd_id]['size'])) {
+                $size = $_SESSION['cart'][$prd_id]['size'];
+                $temp[$prd_id]['prd_size'] = $size;
+            }
+
+            // Lấy số lượng sản phẩm từ SESSION
+            $quantity = $_SESSION['cart'][$prd_id][$size];
+            $temp[$prd_id]['prd_quantity'] = $quantity;
+
             // Tìm bản ghi cần thêm vào giỏ hàng
             $sqlTemp = "SELECT * FROM product WHERE prd_id = '$prd_id'";
             $resultTemp = mysqli_query($connect, $sqlTemp);
@@ -18,9 +28,6 @@ function view_cart() {
 
                     $list_img = explode(',',$each['prd_img']);
                     $temp[$prd_id]['prd_img'] = $list_img[0];
-
-                    $temp[$prd_id]['prd_size'] = $each['prd_size'];
-                    // $temp[$prd_id]['amount'] = $value;
                 }
             }
         }
@@ -31,37 +38,31 @@ function view_cart() {
     $arr['category'] = $cate;
     return $arr;
 }
+
 // Thêm sản phẩm vào giỏ hàng
 function add_cart() {
     $prd_id = $_GET['prd_id'];
+    $size = $_GET['size'];
     if(isset($_SESSION['cart'])){
-        if(isset($_SESSION['cart'][$prd_id])) {
-            $_SESSION['cart'][$prd_id]++;
+        if(isset($_SESSION['cart'][$prd_id][$size])) {
+            $_SESSION['cart'][$prd_id][$size]+= 1;
+            $prd_quantity = $_SESSION['cart'][$prd_id][$size];
         } else {
-            $_SESSION['cart'][$prd_id] = 1;
+            $_SESSION['cart'][$prd_id][$size] = 1;
+            $prd_quantity = 1;
         }
+        // Lấy số lượng sản phẩm từ SESSION và cập nhật số lượng sản phẩm tăng lên
     } else {
         $_SESSION['cart'] = array();
-        $_SESSION['cart'][$prd_id] = 1;
+        $_SESSION['cart'][$prd_id][$size] = 1;
+        $prd_quantity = 1;
     }
-    
-}
+    // Lưu size vào session
+    $_SESSION['cart'][$prd_id]['size'] = $size;
 
-// Thêm sản phẩm vào giỏ hàng
-// function add_cart() {
-//     $prd_id = $_GET['prd_id'];
-//     $quantity = $_POST['quantity']; // Lấy giá trị số lượng từ trường input
-//     if(isset($_SESSION['cart'])){
-//         if(isset($_SESSION['cart'][$prd_id])) {
-//             $_SESSION['cart'][$prd_id] += $quantity; // Thêm số lượng mới vào số lượng hiện có
-//         } else {
-//             $_SESSION['cart'][$prd_id] = $quantity;
-//         }
-//     } else {
-//         $_SESSION['cart'] = array();
-//         $_SESSION['cart'][$prd_id] = $quantity;
-//     }
-// }
+    // Trả về số lượng sản phẩm mới để hiển thị trong giỏ hàng
+    return $prd_quantity;
+}
 
 // Cập nhật giỏ hàng
 function update_cart() {

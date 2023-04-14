@@ -233,7 +233,7 @@
                                                     <a href="" class="td-name"><?= $prd['prd_name'] ?></a>
                                                     <span class="td-size">Chọn size nam: <?= $prd['prd_size'] ?></span>
                                                 </td>
-                                                <td>01</td>
+                                                <td><?= $prd['prd_quantity'] ?></td>
                                                 <td>
                                                     <button class="td-delete">
                                                         <a href="">Xóa</a>

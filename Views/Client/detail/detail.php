@@ -296,8 +296,58 @@
                                                 <?php echo number_format($prd['prd_old_price'],0,'.','.'); ?>₫</div>
                                         </div>
                                         <div class="product-stats">
-                                            <div class="product-stocks"><i class="fa-solid fa-check"></i> Kho hàng: <b>CÒN
-                                                    HÀNG</b></div>
+                                            <div class="product-stocks">
+                                                <i class="fa-solid fa-check">
+                                                </i> Kho hàng: 
+                                                <b>
+                                                    <?php
+                                                        $quantity_size = explode(",", $prd['prd_size']);
+                                                        if(isset($_GET['size'])) {
+                                                            switch ($_GET['size']) {
+                                                                case '38':
+                                                                    if((int)$quantity_size[0] === 0) {
+                                                                        echo "Hết hàng";
+                                                                    } else {
+                                                                        echo "Còn hàng";
+                                                                    }
+                                                                    break;
+                                                                case '39':
+                                                                    if((int)$quantity_size[1] === 0) {
+                                                                        echo "Hết hàng";
+                                                                    } else {
+                                                                        echo "Còn hàng";
+                                                                    }
+                                                                    break;
+                                                                case '40':
+                                                                    if((int)$quantity_size[2] === 0) {
+                                                                        echo "Hết hàng";
+                                                                    } else {
+                                                                        echo "Còn hàng";
+                                                                    }
+                                                                    break;
+                                                                case '41':
+                                                                    if((int)$quantity_size[3] === 0) {
+                                                                        echo "Hết hàng";
+                                                                    } else {
+                                                                        echo "Còn hàng";
+                                                                    }
+                                                                    break;
+                                                                case '42':
+                                                                    if((int)$quantity_size[4] === 0) {
+                                                                        echo "Hết hàng";
+                                                                    } else {
+                                                                        echo "Còn hàng";
+                                                                    }
+                                                                    break;
+                                                                
+                                                                default:
+                                                                    # code...
+                                                                    break;
+                                                            }
+                                                        }
+                                                    ?>
+                                                </b>
+                                            </div>
                                             <div class="product-model"><i class="fa-solid fa-circle"></i> Mã sản phẩm:
                                                 <span>MSN1030</span></div>
                                             <div class="product-brand">
@@ -308,29 +358,29 @@
                                     <form class="product-options" role="form" action="">
                                         <div class="options-title">Chọn size</div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" name="" id="inlineRadio1"
-                                                value="option1">
-                                            <label class="form-check-label hvr-glow" for="inlineRadio1">38</label>
+                                            <input class="form-check-input" type="checkbox" name="option-size-38" id="option-size-38"
+                                                value="38">
+                                            <label class="form-check-label hvr-glow" for="option-size-38">38</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" name="" id="inlineRadio2"
-                                                value="option2">
-                                            <label class="form-check-label hvr-glow" for="inlineRadio2">39</label>
+                                            <input class="form-check-input" type="checkbox" name="option-size-39" id="option-size-39"
+                                                value="39">
+                                            <label class="form-check-label hvr-glow" for="option-size-39">39</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" name="" id="inlineRadio3"
-                                                value="option3">
-                                            <label class="form-check-label hvr-glow" for="inlineRadio3">40</label>
+                                            <input class="form-check-input" type="checkbox" name="option-size-40" id="option-size-40"
+                                                value="40">
+                                            <label class="form-check-label hvr-glow" for="option-size-40">40</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" name="" id="inlineRadio4"
-                                                value="option4">
-                                            <label class="form-check-label hvr-glow" for="inlineRadio4">40</label>
+                                            <input class="form-check-input" type="checkbox" name="option-size-41" id="option-size-41"
+                                                value="41">
+                                            <label class="form-check-label hvr-glow" for="option-size-41">41</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" name="" id="inlineRadio5"
-                                                value="option5">
-                                            <label class="form-check-label hvr-glow" for="inlineRadio5">41</label>
+                                            <input class="form-check-input" type="checkbox" name="option-size-42" id="option-size-42"
+                                                value="42">
+                                            <label class="form-check-label hvr-glow" for="option-size-42">42</label>
                                         </div>
                                         <div class="tutorial-size">Hướng dẫn chọn size</div>
                                         <div class="button-group-page">
@@ -339,7 +389,7 @@
                                                 <span class="plus hvr-fade-for-icon">+</span>
                                                 <span class="minus hvr-fade-for-icon">-</span>
                                             </div>
-                                            <button class="button-cart hvr-sweep-to-right"><a href="?redirect=cart&action=add&prd_id=<?= $prd['prd_id'] ?>">THÊM VÀO GIỎ</a></button>
+                                            <button class="button-cart hvr-sweep-to-right"><a href="">THÊM VÀO GIỎ</a></button>
                                             <button class="button-buy hvr-sweep-to-left"><a href="">MUA HÀNG NGAY</a></button>
                                         </div>
                                         <div class="hotline hvr-shrink">Hotline:<span> 0973 711 868</span></div>
@@ -1234,16 +1284,17 @@
         ?>
     </div>
 
-    <script src="/project/Public/Js/Client/zoomImage.js"></script>
-    <script src="/project/Public/Js/Client/showImage.js"></script>
-    <script src="/project/Public/Js/Client/handleSlideShow.js"></script>
-    <script src="/project/Public/Js/Client/controlModal.js"></script>
-    <script src="/project/Public/Js/Client/setCountdown.js"></script>
-    <script src="/project/Public/Js/Client/handleHoverImage.js"></script>
-    <script src="/project/Public/Js/Client/handleUITabs.js"></script>
-    <script src="/project/Public/Js/Client/handleQuantity.js"></script>
-    <script src="/project/Public/Js/Client/handleCardSlider.js"></script>
-    <script src="/project/Public/Js/Client/toogleListProduct.js"></script>
+    <script src="Public/Js/Client/zoomImage.js"></script>
+    <script src="Public/Js/Client/showImage.js"></script>
+    <script src="Public/Js/Client/handleSlideShow.js"></script>
+    <script src="Public/Js/Client/controlModal.js"></script>
+    <script src="Public/Js/Client/setCountdown.js"></script>
+    <script src="Public/Js/Client/handleHoverImage.js"></script>
+    <script src="Public/Js/Client/handleUITabs.js"></script>
+    <script src="Public/Js/Client/handleQuantity.js"></script>
+    <script src="Public/Js/Client/handleCardSlider.js"></script>
+    <script src="Public/Js/Client/toogleListProduct.js"></script>
+    <script src="Views/Client/detail/handleCheckboxSize.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>

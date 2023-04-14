@@ -174,7 +174,7 @@
                                         <input value="" required name="prd_name" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
-                                        <label>Kích thước sản phẩm</label>
+                                        <label>Số lượng sản phẩm (Size 38, 39, 40, 41, 42)</label>
                                         <input value="" required name="prd_size" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group">
