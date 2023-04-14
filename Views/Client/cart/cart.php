@@ -223,26 +223,28 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                            foreach ($arr['product'] as $prd) {
+                                            foreach ($arr['product'] as $prd_id => $size_id) {
+                                                foreach($size_id as $size_id => $prd_detail) {
                                         ?>
                                             <tr>
                                                 <td>
-                                                    <img class="td-img" src="Public/Images/<?= $prd['prd_img'] ?>" alt="">
+                                                    <img class="td-img" src="Public/Images/<?= $prd_detail['prd_img'] ?>" alt="">
                                                 </td>
                                                 <td>
-                                                    <a href="" class="td-name"><?= $prd['prd_name'] ?></a>
-                                                    <span class="td-size">Chọn size nam: <?= $prd['prd_size'] ?></span>
+                                                    <a href="" class="td-name"><?= $prd_detail['prd_name'] ?></a>
+                                                    <span class="td-size">Chọn size nam: <?= $prd_detail['size_number'] ?></span>
                                                 </td>
-                                                <td><?= $prd['prd_quantity'] ?></td>
+                                                <td><?= $prd_detail['prd_quantity'] ?></td>
                                                 <td>
                                                     <button class="td-delete">
                                                         <a href="">Xóa</a>
                                                     </button>
                                                 </td>
-                                                <td><?php echo number_format($prd['prd_current_price'],0,'.','.'); ?>₫</td>
-                                                <td><?php echo number_format($prd['prd_current_price'],0,'.','.'); ?>₫</td>
+                                                <td><?php echo number_format($prd_detail['prd_current_price'],0,'.','.'); ?>₫</td>
+                                                <td><?php echo number_format($prd_detail['prd_current_price'],0,'.','.'); ?>₫</td>
                                             </tr>
                                         <?php
+                                                }
                                             }
                                         ?>
                                     </tbody>

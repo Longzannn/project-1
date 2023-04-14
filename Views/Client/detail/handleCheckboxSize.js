@@ -26,3 +26,6 @@ listInp.forEach(input => {
         document.querySelector('.button-cart a').href = redirectURL; // Thay đổi href của thẻ a
     }
 });
+
+
+

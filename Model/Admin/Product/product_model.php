@@ -9,20 +9,22 @@
         $arr = array();
         $arr['category'] = $query_cate;
         $arr['product'] = $query_prd;
+        
         return $arr;
     }
     function create() {
         include_once('Config/connect.php');
         $category = mysqli_query($connect, "SELECT * FROM category ORDER BY cat_id DESC");
+        $size = mysqli_query($connect, "SELECT * FROM size");
         include_once('Config/close_connect.php');
         $record = array();
         $record['category'] = $category;
+        $record['size'] = $size;
         return $record;
     }
     function store() {
         include_once('Config/connect.php');
         $prd_name = $_POST['prd_name'];
-        $prd_size = $_POST['prd_size'];
         $prd_old_price = $_POST['prd_old_price'];
         $prd_current_price = $_POST['prd_current_price'];
         $prd_reviews = $_POST['prd_reviews'];
@@ -43,28 +45,46 @@
         // Chuyển đổi mảng đường dẫn ảnh thành chuỗi
         $prd_img_str = implode(',', $prd_imgs);
         
-        $sql = "INSERT INTO product (prd_name, prd_size, prd_old_price, prd_current_price, prd_reviews, prd_warranty, prd_promotion, prd_img, cat_id, prd_status, prd_new, prd_featured, prd_details) 
-        VALUES ('$prd_name', '$prd_size', $prd_old_price, $prd_current_price, $prd_reviews, '$prd_warranty', '$prd_promotion', '$prd_img_str', $cat_id, $prd_status, $prd_new, $prd_featured, '$prd_details')";
-        $record = mysqli_query($connect, $sql);
+        $sql = "INSERT INTO product (prd_name, prd_old_price, prd_current_price, prd_reviews, prd_warranty, prd_promotion, prd_img, cat_id, prd_status, prd_new, prd_featured, prd_details) 
+        VALUES ('$prd_name', $prd_old_price, $prd_current_price, $prd_reviews, '$prd_warranty', '$prd_promotion', '$prd_img_str', $cat_id, $prd_status, $prd_new, $prd_featured, '$prd_details')";
+        mysqli_query($connect, $sql);
+
+        $prd_id = mysqli_insert_id($connect);
+        $size = mysqli_query($connect, "SELECT * FROM size");
+        while ($row = mysqli_fetch_assoc($size)) {
+            $size_id = $row['size_id'];
+            $size_number = $row['size_number'];
+            $size_quantity = $_POST[$size_number];
+            $product_detail = "INSERT INTO product_detail (prd_id, size_id, prd_detail_quantity) 
+            VALUES ('$prd_id', '$size_id', '$size_quantity')";
+        mysqli_query($connect, $product_detail);
+        }
+
         include_once('Config/close_connect.php');
-        return $record;
     }
     function edit() {
         $prd_id = $_GET['prd_id'];
         include_once('Config/connect.php');
         $product= mysqli_query($connect, "SELECT * FROM product WHERE prd_id = $prd_id");
         $category = mysqli_query($connect, "SELECT * FROM category ORDER BY cat_id DESC");
+        $size = mysqli_query($connect, "SELECT * FROM size");
+        $product_detail = mysqli_query($connect, "SELECT product_detail.*, product.*, size.* 
+        FROM product_detail 
+        INNER JOIN product ON product_detail.prd_id = product.prd_id
+        INNER JOIN size ON product_detail.size_id = size.size_id
+        WHERE product.prd_id = '$prd_id'");
         include_once('Config/close_connect.php');
         $record = array();
         $record['product'] = $product;
         $record['category'] = $category;
+        $record['size'] = $size;
+        $record['product_detail'] = $product_detail;
         return $record;
     }
     function update() {
         include_once('Config/connect.php');
         $prd_id = $_GET['prd_id'];
         $prd_name = $_POST["prd_name"];
-        $prd_size = $_POST["prd_size"];
         $prd_old_price = $_POST["prd_old_price"];
         $prd_current_price = $_POST["prd_current_price"];
         $prd_reviews = $_POST["prd_reviews"];
@@ -99,17 +119,25 @@
             $prd_img_str = implode(',', $prd_imgs);
         }        
         
-        $sql = "UPDATE product SET prd_name = '$prd_name', prd_size = '$prd_size', prd_old_price = $prd_old_price, prd_current_price = $prd_current_price, prd_reviews = $prd_reviews, prd_warranty = '$prd_warranty', prd_promotion = '$prd_promotion', cat_id = $cat_id, prd_status = $prd_status, prd_new = $prd_new, prd_featured = $prd_featured, prd_details = '$prd_details', prd_img = '$prd_img_str' WHERE prd_id = $prd_id";
+        $sql = "UPDATE product SET prd_name = '$prd_name', prd_old_price = $prd_old_price, prd_current_price = $prd_current_price, prd_reviews = $prd_reviews, prd_warranty = '$prd_warranty', prd_promotion = '$prd_promotion', cat_id = $cat_id, prd_status = $prd_status, prd_new = $prd_new, prd_featured = $prd_featured, prd_details = '$prd_details', prd_img = '$prd_img_str' WHERE prd_id = $prd_id";
         mysqli_query($connect, $sql);
+
+        $prd_id = $_GET['prd_id'];
+        $size = $_POST['prd_detail_quantity'];
+        
+        foreach($size as $size_id => $quantity) {
+            $sql_product_detail =  "UPDATE product_detail SET prd_detail_quantity = $quantity WHERE size_id = '$size_id' AND prd_id = '$prd_id' ";
+            mysqli_query($connect, $sql_product_detail);
+        }
+
         include_once('Config/close_connect.php');
     }
     function destroy() {
         $prd_id = $_GET['prd_id'];
         include_once('Config/connect.php');
-        $sql = "DELETE FROM product WHERE prd_id = $prd_id";
-        $record = mysqli_query($connect, $sql);
+        mysqli_query($connect, "DELETE FROM product_detail WHERE prd_id = '$prd_id'");
+        mysqli_query($connect, "DELETE FROM product WHERE prd_id = '$prd_id'");
         include_once('Config/close_connect.php');
-        return $record;
     }
     switch ($action) {
         case '':

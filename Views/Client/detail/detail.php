@@ -299,52 +299,31 @@
                                             <div class="product-stocks">
                                                 <i class="fa-solid fa-check">
                                                 </i> Kho hàng: 
-                                                <b>
+                                                <b> 
                                                     <?php
-                                                        $quantity_size = explode(",", $prd['prd_size']);
+                                                        $connect = mysqli_connect('localhost', 'root', '', 'test');
+
+                                                        $prd_id = (int)$_GET['prd_id'];
+
                                                         if(isset($_GET['size'])) {
-                                                            switch ($_GET['size']) {
-                                                                case '38':
-                                                                    if((int)$quantity_size[0] === 0) {
-                                                                        echo "Hết hàng";
-                                                                    } else {
-                                                                        echo "Còn hàng";
-                                                                    }
-                                                                    break;
-                                                                case '39':
-                                                                    if((int)$quantity_size[1] === 0) {
-                                                                        echo "Hết hàng";
-                                                                    } else {
-                                                                        echo "Còn hàng";
-                                                                    }
-                                                                    break;
-                                                                case '40':
-                                                                    if((int)$quantity_size[2] === 0) {
-                                                                        echo "Hết hàng";
-                                                                    } else {
-                                                                        echo "Còn hàng";
-                                                                    }
-                                                                    break;
-                                                                case '41':
-                                                                    if((int)$quantity_size[3] === 0) {
-                                                                        echo "Hết hàng";
-                                                                    } else {
-                                                                        echo "Còn hàng";
-                                                                    }
-                                                                    break;
-                                                                case '42':
-                                                                    if((int)$quantity_size[4] === 0) {
-                                                                        echo "Hết hàng";
-                                                                    } else {
-                                                                        echo "Còn hàng";
-                                                                    }
-                                                                    break;
-                                                                
-                                                                default:
-                                                                    # code...
-                                                                    break;
+                                                            $size = (int)$_GET['size'];
+
+                                                            $product_detail_query = mysqli_query($connect, "SELECT * FROM product_detail
+                                                            JOIN product ON product_detail.prd_id = product.prd_id
+                                                            JOIN size ON product_detail.size_id = size.size_id
+                                                            WHERE product_detail.prd_id = '$prd_id' AND size.size_number = '$size'"
+                                                        );
+                                                            $product_detail = mysqli_fetch_assoc($product_detail_query);
+
+                                                            if ($product_detail['prd_detail_quantity'] == 0) {
+                                                                echo "Hết hàng";
+                                                            } else {
+                                                                echo "Còn hàng";
                                                             }
+                                                        } else {
+                                                            echo " Bạn chưa chọn size!";
                                                         }
+                                                        mysqli_close($connect);
                                                     ?>
                                                 </b>
                                             </div>
@@ -357,31 +336,17 @@
                                     </div>
                                     <form class="product-options" role="form" action="">
                                         <div class="options-title">Chọn size</div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" name="option-size-38" id="option-size-38"
-                                                value="38">
-                                            <label class="form-check-label hvr-glow" for="option-size-38">38</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" name="option-size-39" id="option-size-39"
-                                                value="39">
-                                            <label class="form-check-label hvr-glow" for="option-size-39">39</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" name="option-size-40" id="option-size-40"
-                                                value="40">
-                                            <label class="form-check-label hvr-glow" for="option-size-40">40</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" name="option-size-41" id="option-size-41"
-                                                value="41">
-                                            <label class="form-check-label hvr-glow" for="option-size-41">41</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" name="option-size-42" id="option-size-42"
-                                                value="42">
-                                            <label class="form-check-label hvr-glow" for="option-size-42">42</label>
-                                        </div>
+                                        <?php
+                                            foreach($arr['product_detail'] as $prd_detail) {
+                                        ?>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="option-size-<?= $prd_detail['size_number'] ?>" id="option-size-<?= $prd_detail['size_number'] ?>"
+                                                    value="<?= $prd_detail['size_number'] ?>">
+                                                <label class="form-check-label hvr-glow" for="option-size-<?= $prd_detail['size_number'] ?>"><?= $prd_detail['size_number'] ?></label>
+                                            </div>
+                                        <?php
+                                            }
+                                        ?>
                                         <div class="tutorial-size">Hướng dẫn chọn size</div>
                                         <div class="button-group-page">
                                             <div class="product-quantity">
@@ -675,7 +640,7 @@
                             <div class="bundled-products mt-4">
                                 <div class="row">
                                     <?php
-                                        foreach ($arr['productLimit1'] as $prd) {
+                                        foreach ($arr['product_limit_1'] as $prd) {
                                     ?>
                                         <div class="col-12">
                                             <div class="product-layout">

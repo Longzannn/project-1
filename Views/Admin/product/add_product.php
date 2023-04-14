@@ -173,10 +173,16 @@
                                         <label>Tên sản phẩm</label>
                                         <input value="" required name="prd_name" class="form-control" placeholder="">
                                     </div>
-                                    <div class="form-group">
-                                        <label>Số lượng sản phẩm (Size 38, 39, 40, 41, 42)</label>
-                                        <input value="" required name="prd_size" class="form-control" placeholder="">
-                                    </div>
+                                    <?php
+                                        foreach($record['size'] as $size) {
+                                    ?>
+                                        <div class="form-group">
+                                            <label>Số lượng sản phẩm (Size <?= $size['size_number'] ?>)</label>
+                                            <input value="" required name="<?= $size['size_number'] ?>" class="form-control" placeholder="">
+                                        </div>
+                                    <?php
+                                        }
+                                    ?>
                                     <div class="form-group">
                                         <label>Giá sản phẩm niêm yết</label>
                                         <input value="" required name="prd_old_price" type="number" min="0"

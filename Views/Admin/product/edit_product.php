@@ -179,11 +179,16 @@
                                             <input value="<?= $prd['prd_name'] ?>" required name="prd_name"
                                                 class="form-control" placeholder="">
                                         </div>
-                                        <div class="form-group">
-                                            <label>Số lượng sản phẩm (Size 38, 39, 40, 41, 42)</label>
-                                            <input value="<?= $prd['prd_size'] ?>" required name="prd_size"
-                                                class="form-control" placeholder="">
-                                        </div>
+                                        <?php
+                                            foreach($record['product_detail'] as $size) {
+                                        ?>
+                                                <div class="form-group">
+                                                    <label>Số lượng sản phẩm (Size <?= $size['size_number'] ?>)</label>
+                                                    <input value="<?= $size['prd_detail_quantity'] ?>" type="number" required name="prd_detail_quantity[<?= $size['size_id'] ?>]" class="form-control" placeholder="">
+                                                </div>
+                                        <?php
+                                            }
+                                        ?>
                                         <div class="form-group">
                                             <label>Giá sản phẩm niêm yết</label>
                                             <input value="<?= $prd['prd_old_price'] ?>" required name="prd_old_price"
@@ -225,14 +230,14 @@
                                         <div class="form-group">
                                             <label>Danh mục</label>
                                             <select name="cat_id" class="form-control">
-                                                <?php
+                                            <?php
                                                 foreach($record['category'] as $cate) {
                                             ?>
-                                                <option <?php if($prd['cat_id'] == $cate['cat_id']) {echo "selected";} ?>
-                                                    value=<?php echo $cate['cat_id']; ?>>
-                                                    <?php echo $cate['cat_name']; ?>
-                                                </option>
-                                                <?php
+                                                    <option <?php if($prd['cat_id'] == $cate['cat_id']) {echo "selected";} ?>
+                                                        value=<?php echo $cate['cat_id']; ?>>
+                                                        <?php echo $cate['cat_name']; ?>
+                                                    </option>
+                                            <?php
                                                 }
                                             ?>
                                             </select>

@@ -895,7 +895,7 @@
                      </div>
                 </div>
             </div>
-            <div class="footer" >
+            <div class="footer">
                 <div class="footer-wrapper">
                     <div class="copyright">Copyright © 2023 Mygroup Tech.,JSC</div>
                 </div>
