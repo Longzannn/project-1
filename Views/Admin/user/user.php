@@ -180,8 +180,9 @@
                                                     <th>ID</th>
                                                     <th>Họ & Tên</th>
                                                     <th>Số Điện Thoại</th>
-                                                    <th>Địa Chỉ</th>
                                                     <th>Email</th>
+                                                    <th>Địa Chỉ</th>
+                                                    <th>Vai Trò</th>
                                                     <th>Hành Động</th>
                                                 </tr>
                                             </thead>
@@ -194,8 +195,9 @@
                                                     <td><?php echo $item['user_id'] ?></td>
                                                     <td><?php echo $item['user_name'] ?></td>
                                                     <td><?php echo $item['user_phone'] ?></td>
-                                                    <td><?php echo $item['user_address'] ?></td>
                                                     <td><?php echo $item['user_email'] ?></td>
+                                                    <td><?php echo $item['user_address'] ?></td>
+                                                    <td><?php echo $item['user_role'] ?></td>
                                                     <td>
                                                         <button type="button" class="btn btn-info"><a href="?controller=<?= $controller ?>&redirect=<?= $redirect ?>&action=edit&user_id=<?= $item['user_id'] ?>">Sửa</a></button>
                                                         <button type="button" class="btn btn-danger"><a href="?controller=<?= $controller ?>&redirect=<?= $redirect ?>&action=destroy&user_id=<?= $item['user_id'] ?>">Xóa</a></button>

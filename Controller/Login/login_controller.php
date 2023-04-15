@@ -10,7 +10,7 @@ switch($action) {
     case 'checklogin' :
         require_once('Model/Login/login_model.php');
         if(isset($check)) {
-            if($_SESSION['role'] === 'admin') {
+            if($_SESSION['user_role'] === 'admin') {
                 header('location: index.php?controller=admin');
             } else {
                 header('location: index.php?');

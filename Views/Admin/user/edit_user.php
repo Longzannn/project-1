@@ -187,6 +187,11 @@
                                                     value="<?= $item['user_email'] ?>">
                                             </div>
                                             <div class="form-group">
+                                                <label>Password</label>
+                                                <input name="user_password" required type="password" class="form-control"
+                                                    value="<?= $item['user_password'] ?>">
+                                            </div>
+                                            <div class="form-group">
                                                 <label>Số Điện Thoại</label>
                                                 <input name="user_phone" required class="form-control"
                                                     value="<?= $item['user_phone'] ?>">
@@ -195,6 +200,13 @@
                                                 <label>Địa Chỉ</label>
                                                 <input name="user_address" required class="form-control"
                                                     value="<?= $item['user_address'] ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Vai trò:</label>
+                                                <select name="user_role" class="form-control">
+                                                    <option value="admin">Admin</option>
+                                                    <option value="member">Member</option>
+                                                </select>
                                             </div>
                                             <input value="Cập nhật" name="sbm" type="submit"
                                                 class="btn btn-success"></input>

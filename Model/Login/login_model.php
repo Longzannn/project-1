@@ -1,20 +1,19 @@
 <?php
 function checklogin() {
     include_once('Config/connect.php');
-    $user = $_POST['user'];
-    $pass = $_POST['pass'];
-    $sql = "SELECT * FROM account WHERE user = '$user' AND pass = '$pass'";
-    $query = mysqli_query($connect, $sql);
-    $count = mysqli_num_rows(mysqli_query($connect, $sql));
+    $user_email = $_POST['user_email'];
+    $user_password = $_POST['user_password'];
+    $user = mysqli_query($connect, "SELECT * FROM user WHERE user_email = '$user_email' AND user_password = '$user_password'");
+    $count = mysqli_num_rows(mysqli_query($connect, "SELECT * FROM user WHERE user_email = '$user_email' AND user_password = '$user_password'"));
     if($count == 0) {
         //login sai
         return 0;
     }else {
         //login đúng
-        $_SESSION['user'] = $user;
-        $_SESSION['pass'] = $pass;
-        foreach ($query as $item) {
-            $_SESSION['role'] = $item['role'];
+        $_SESSION['user_email'] = $user_email;
+        $_SESSION['user_password'] = $user_password;
+        foreach ($user as $item) {
+            $_SESSION['user_role'] = $item['user_role'];
         }
         return 1;
     }

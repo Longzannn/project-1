@@ -21,7 +21,7 @@
             <div class="header-wrapper">
                 <div class="header-navbar">
                     <div class="logo-wrapper">
-                        <a href="#">
+                        <a href="index.php">
                             <img src="https://myshoes.vn/image/cache/catalog/logo/logo_ms-565x195.png" alt=""
                                 class="logo-img">
                         </a>

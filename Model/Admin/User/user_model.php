@@ -10,10 +10,12 @@
         include_once('Config/connect.php');
         $user_name = $_POST['user_name'];
         $user_email = $_POST['user_email'];
+        $user_password = $_POST['user_password'];
         $user_phone = $_POST['user_phone'];
         $user_address = $_POST['user_address'];
-        $sql = "INSERT INTO user (user_name, user_email, user_phone, user_address) 
-        VALUES ('$user_name', '$user_email', '$user_phone', '$user_address')";
+        $user_role = $_POST['user_role'];
+        $sql = "INSERT INTO user (user_name, user_email, user_password, user_phone, user_address, user_role) 
+        VALUES ('$user_name', '$user_email', '$user_password', '$user_phone', '$user_address', '$user_role')";
         $record = mysqli_query($connect, $sql);
         include_once('Config/close_connect.php');
         return $record;
@@ -31,9 +33,10 @@
         $user_id = $_GET['user_id'];
         $user_name = $_POST['user_name'];
         $user_email = $_POST['user_email'];
+        $user_password = $_POST['user_password'];
         $user_phone = $_POST['user_phone'];
         $user_address = $_POST['user_address'];
-        $sql = "UPDATE user SET user_name = '$user_name', user_email = '$user_email', user_phone = '$user_phone', user_address = '$user_address' WHERE user_id = $user_id";
+        $sql = "UPDATE user SET user_name = '$user_name', user_email = '$user_email', user_password = '$user_password', user_phone = '$user_phone', user_address = '$user_address', user_role = '$user_role' WHERE user_id = $user_id";
         mysqli_query($connect, $sql);
         include_once('Config/close_connect.php');
     }

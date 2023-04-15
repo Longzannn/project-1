@@ -813,6 +813,11 @@ input[type=number]
     cursor: pointer;
 }
 
+.button-cart a:not([href]):not([class]), a:not([href]):not([class]):hover {
+    color: #fff;
+    text-decoration: none;
+}
+
 .button-cart {
     flex: 1;
     font-size: 1.3rem;

@@ -181,12 +181,23 @@
                                                 <input name="user_email" required type="email" class="form-control">
                                             </div>
                                             <div class="form-group">
+                                                <label>Password</label>
+                                                <input name="user_password" required type="password" class="form-control">
+                                            </div>
+                                            <div class="form-group">
                                                 <label>Số Điện Thoại</label>
                                                 <input name="user_phone" required class="form-control">
                                             </div>
                                             <div class="form-group">
                                                 <label>Địa Chỉ</label>
                                                 <input name="user_address" required class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Vai trò:</label>
+                                                <select name="user_role" class="form-control">
+                                                    <option value="admin">Admin</option>
+                                                    <option value="member">Member</option>
+                                                </select>
                                             </div>
                                             <input value="Thêm mới" name="sbm" type="submit"
                                                 class="btn btn-success"></input>

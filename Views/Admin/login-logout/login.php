@@ -14,11 +14,11 @@
                 <form class="login" method="post" action="index.php?controller=login&action=checklogin">
                     <div class="login__field">
                         <i class="login__icon fas fa-user"></i>
-                        <input type="text" class="login__input" placeholder="Username" name="user">
+                        <input type="email" class="login__input" placeholder="Email" name="user_email">
                     </div>
                     <div class="login__field">
                         <i class="login__icon fas fa-lock"></i>
-                        <input type="password" class="login__input" placeholder="Password" name="pass">
+                        <input type="password" class="login__input" placeholder="Password" name="user_password">
                     </div>
                     <button class="button login__submit" type="submit" name="sbm">
                         <span class="button__text">Log In Now</span>
