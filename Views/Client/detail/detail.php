@@ -33,7 +33,7 @@
                     <div class="classic-wrapper">
                         <div class="accounts">
                             <!-- Chưa login -->
-                            <a href="" class="accounts-link">
+                            <!-- <a href="" class="accounts-link">
                                 <i class="fa-solid fa-user"></i>
                                 <div class="links-text">
                                     <span>Tài khoản</span>
@@ -44,10 +44,10 @@
                                 <span class="login"><i class="fa-solid fa-arrow-right-to-bracket"></i>Đăng nhập</span>
                                 <span class="logout"><i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>Đăng
                                     ký</span>
-                            </div>
+                            </div> -->
 
                             <!-- Đã login -->
-                            <!-- <a href="" class="accounts-link">
+                            <a href="" class="accounts-link">
                                 <i class="fa-solid fa-user"></i>
                                 <div class="links-text">
                                     <span>Tài khoản</span>
@@ -58,10 +58,10 @@
                                 <span class="login"><i class="fa-solid fa-user"></i>Tài khoản của tôi</span>
                                 <span class="logout"><i class="fa-solid fa-cart-shopping"></i>Đơn hàng của tôi</span>
                                 <span class="exit"><i class="fa-solid fa-arrow-right-to-bracket"></i>Thoát</span>
-                            </div> -->
+                            </div>
                         </div>
                         <div class="cart">
-                            <a href="" class="cart-link hvr-icon-grow">
+                            <a href="?redirect=cart" class="cart-link hvr-icon-grow">
                                 <i class="fa fa-shopping-cart"></i>
                             </a>
                             <span class="quantity">0</span>
@@ -334,7 +334,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <form class="product-options" role="form" action="">
+                                    <form class="product-options">
                                         <div class="options-title">Chọn size</div>
                                         <?php
                                             foreach($arr['product_detail'] as $prd_detail) {
@@ -354,8 +354,8 @@
                                                 <span class="plus hvr-fade-for-icon">+</span>
                                                 <span class="minus hvr-fade-for-icon">-</span>
                                             </div>
-                                            <button class="button-cart hvr-sweep-to-right"><a href="">THÊM VÀO GIỎ</a></button>
-                                            <button class="button-buy hvr-sweep-to-left"><a href="">MUA HÀNG NGAY</a></button>
+                                            <button class="button-cart hvr-sweep-to-right"><a>THÊM VÀO GIỎ</a></button>
+                                            <button class="button-buy hvr-sweep-to-left"><a>MUA HÀNG NGAY</a></button>
                                         </div>
                                         <div class="hotline hvr-shrink">Hotline:<span> 0973 711 868</span></div>
                                         <div class="content-top">

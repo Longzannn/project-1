@@ -821,6 +821,9 @@ input[type=number]
 }
 
 .button-cart a {
+    display: block;
+    height: 100%;
+    line-height: 50px;
     color: var(--text-white-color);
 }
 
@@ -833,6 +836,9 @@ input[type=number]
 }
 
 .button-buy a {
+    display: block;
+    height: 100%;
+    line-height: 50px;
     color: var(--text-white-color);
 }
 

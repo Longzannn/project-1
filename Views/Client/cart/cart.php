@@ -56,7 +56,7 @@
                             </div>
                         </div>
                         <div class="cart">
-                            <a href="" class="cart-link hvr-icon-grow">
+                            <a href="?redirect=cart" class="cart-link hvr-icon-grow">
                                 <i class="fa fa-shopping-cart"></i>
                             </a>
                             <span class="quantity">0</span>
@@ -234,14 +234,20 @@
                                                     <a href="" class="td-name"><?= $prd_detail['prd_name'] ?></a>
                                                     <span class="td-size">Chọn size nam: <?= $prd_detail['size_number'] ?></span>
                                                 </td>
-                                                <td><?= $prd_detail['prd_quantity'] ?></td>
+                                                <td class="td-quantity">
+                                                    <div class="product-quantity">
+                                                        <input name="quantity" type="number" min="1" max="9" step="1" value="<?= $prd_detail['prd_quantity'] ?>">
+                                                        <span class="plus hvr-fade-for-icon">+</span>
+                                                        <span class="minus hvr-fade-for-icon">-</span>
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <button class="td-delete">
-                                                        <a href="">Xóa</a>
+                                                        <a href="?redirect=cart&action=del&prd_id=<?= $prd_id ?>&size=<?= $prd_detail['size_number'] ?>">Xóa</a>
                                                     </button>
                                                 </td>
-                                                <td><?php echo number_format($prd_detail['prd_current_price'],0,'.','.'); ?>₫</td>
-                                                <td><?php echo number_format($prd_detail['prd_current_price'],0,'.','.'); ?>₫</td>
+                                                <td><?= number_format($prd_detail['prd_current_price'],0,'.','.'); ?>₫</td>
+                                                <td><?= number_format($prd_detail['prd_current_price'],0,'.','.'); ?>₫</td>
                                             </tr>
                                         <?php
                                                 }
@@ -261,11 +267,21 @@
                                         <tbody>
                                             <tr>
                                                 <td style="font-weight: 700;">Thành tiền:</td>
-                                                <td>3.990.000₫</td>
+                                                <td>
+                                                    <?php
+                                                        $total_price = calculate_total_price();
+                                                        echo number_format($total_price);
+                                                    ?>
+                                                ₫</td>
                                             </tr>
                                             <tr>
                                                 <td style="font-weight: 700;">Tổng cộng:</td>
-                                                <td>3.990.000₫</td>
+                                                <td>
+                                                    <?php
+                                                        $total_price = calculate_total_price();
+                                                        echo number_format($total_price);
+                                                    ?>    
+                                                ₫</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -374,6 +390,7 @@
         </footer> 
     </div>
 
+    <script src="Public/Js/Client/handleQuantity.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>

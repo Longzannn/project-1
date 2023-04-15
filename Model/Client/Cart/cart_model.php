@@ -36,6 +36,8 @@ function view_cart() {
         }
     }
 
+    $total_price = calculate_total_price();
+
     include_once('Config/close_connect.php');
     $arr['product'] = $temp;
     $arr['category'] = $cate;
@@ -83,6 +85,35 @@ function add_cart() {
     return $prd_quantity;
 }
 
+// Xóa giỏ hàng
+function del_cart() {
+    $prd_id = $_GET["prd_id"];
+
+    if(isset($_GET['size'])) {
+        $size = (int)$_GET['size'];
+
+        $connect = mysqli_connect('localhost', 'root', '', 'test');
+        $product_detail_query = mysqli_query($connect, "SELECT * FROM product_detail
+        JOIN product ON product_detail.prd_id = product.prd_id
+        JOIN size ON product_detail.size_id = size.size_id
+        WHERE product_detail.prd_id = '$prd_id' AND size.size_number = '$size'");
+        $product_detail = mysqli_fetch_assoc($product_detail_query);
+        mysqli_close($connect);
+    }
+    $size_id = $product_detail['size_id'];
+
+    if(isset($_SESSION['cart'][$prd_id][$size_id])) {
+        unset($_SESSION['cart'][$prd_id][$size_id]);
+        if(count($_SESSION["cart"][$prd_id]) == 0){
+            unset($_SESSION["cart"][$prd_id]);
+        }
+    }
+    
+    if(count($_SESSION["cart"]) == 0){
+        unset($_SESSION["cart"]);
+    }    
+}
+
 // Cập nhật giỏ hàng
 function update_cart() {
     $quantity = $_POST['qtt']; // Lấy số lượng sản phẩm được gửi từ giỏ hàng lên
@@ -90,17 +121,32 @@ function update_cart() {
         $_SESSION['cart'][$prd_id] = $qtt;
     }
 }
-// Xóa giỏ hàng
-function del_cart() {
-    $prd_id = $_GET["prd_id"];
-    unset($_SESSION["cart"][$prd_id]);
-    echo count($_SESSION["cart"]);
-    // die('abc');
-    // die;
-    if(count($_SESSION["cart"]) == 0){
-        unset($_SESSION["cart"]);
+
+function calculate_total_price() {
+    $total_price = 0;
+    if(isset($_SESSION['cart'])) {
+        $connect = mysqli_connect('localhost', 'root', '', 'test');
+        foreach($_SESSION['cart'] as $prd_id => $value) {
+            foreach($value as $size_id => $quantity) {
+                $sqlTemp = "SELECT product_detail.*, product.*, size.* 
+                FROM product_detail
+                INNER JOIN product ON product.prd_id = product_detail.prd_id
+                INNER JOIN size ON product_detail.size_id = size.size_id
+                WHERE product.prd_id = '$prd_id'AND product_detail.size_id = '$size_id' ";
+                $resultTemp = mysqli_query($connect, $sqlTemp);
+                if(isset($resultTemp)){
+                    foreach ($resultTemp as $each){
+                        $total_price += $each['prd_current_price'] * $quantity;
+                    }
+                }
+            }
+        }
+        include_once('Config/close_connect.php');
     }
+    return $total_price;
 }
+
+
 // Trả kết quả về Controller
 switch($action) {
     case '': $arr = view_cart(); break;

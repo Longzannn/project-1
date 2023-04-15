@@ -56,7 +56,7 @@
                             </div>
                         </div>
                         <div class="cart">
-                            <a href="" class="cart-link hvr-icon-grow">
+                            <a href="?redirect=cart" class="cart-link hvr-icon-grow">
                                 <i class="fa fa-shopping-cart"></i>
                             </a>
                             <span class="quantity">0</span>
