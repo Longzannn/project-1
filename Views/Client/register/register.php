@@ -22,10 +22,10 @@
                             <img src="https://myshoes.vn/image/cache/catalog/logo/logo_ms-565x195.png" alt="" class="logo-img">
                         </a>
                     </div>
-                    <div class="search-wrapper">
-                        <input type="text" placeholder="Tìm kiếm sản phẩm...">
-                        <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
+                    <form class="search-wrapper" action="?redirect=search" method="POST">
+                        <input type="text" name="by" placeholder="Tìm kiếm sản phẩm...">
+                        <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
                     <div class="classic-wrapper">
                         <div class="accounts">
                             <!-- Chưa login -->

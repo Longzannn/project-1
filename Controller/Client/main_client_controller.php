@@ -7,13 +7,15 @@
         switch($redirect) {
             case 'detail': 
                 require_once('Model/Client/Detail/detail_model.php');
-                // require_once('Views/Client/home/home.php');
                 require_once('Views/Client/detail/detail.php');
                 ; break;
             case 'category': 
                 require_once('Model/Client/Category/category_model.php');
-                // require_once('Views/Client/home/home.php');
                 require_once('Views/Client/category/category.php');
+                ; break;
+            case 'search': 
+                require_once('Model/Client/Search/search_model.php');
+                require_once('Views/Client/search/search.php');
                 ; break;
             case 'cart': 
                 require_once('Controller/Client/Cart/cart_controller.php');

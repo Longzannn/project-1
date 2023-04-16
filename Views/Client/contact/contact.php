@@ -22,38 +22,45 @@
                             <img src="https://myshoes.vn/image/cache/catalog/logo/logo_ms-565x195.png" alt="" class="logo-img">
                         </a>
                     </div>
-                    <div class="search-wrapper">
-                        <input type="text" placeholder="Tìm kiếm sản phẩm...">
-                        <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
+                    <form class="search-wrapper" action="?redirect=search" method="POST">
+                        <input type="text" name="by" placeholder="Tìm kiếm sản phẩm...">
+                        <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
                     <div class="classic-wrapper">
                         <div class="accounts">
-                            <!-- Chưa login -->
-                            <a href="" class="accounts-link">
-                                <i class="fa-solid fa-user"></i>
-                                <div class="links-text">
-                                    <span>Tài khoản</span>
-                                    <span>Đăng nhập/ Đăng ký</span>
-                                </div>
-                            </a>
-                            <div class="dropdown-menu-accounts">
-                                <span class="login"><i class="fa-solid fa-arrow-right-to-bracket"></i>Đăng nhập</span>
-                                <span class="logout"><i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>Đăng ký</span>
-                            </div>
-
-                            <!-- Đã login -->
-                            <!-- <a href="" class="accounts-link">
-                                <i class="fa-solid fa-user"></i>
-                                <div class="links-text">
-                                    <span>Tài khoản</span>
-                                    <span>Chỉnh sửa / Thoát</span>
-                                </div>
-                            </a>
-                            <div class="dropdown-menu-accounts logined">
-                                <span class="login"><i class="fa-solid fa-user"></i>Tài khoản của tôi</span>
-                                <span class="logout"><i class="fa-solid fa-cart-shopping"></i>Đơn hàng của tôi</span>
-                                <span class="exit"><i class="fa-solid fa-arrow-right-to-bracket"></i>Thoát</span>
-                            </div> -->
+                            <?php
+                                if(!isset($_SESSION['user_email'])) {
+                                    echo "
+                                    <a href='' class='accounts-link'>
+                                        <i class='fa-solid fa-user'></i>
+                                        <div class='links-text'>
+                                            <span>Tài khoản</span>
+                                            <span>Đăng nhập/ Đăng ký</span>
+                                        </div>
+                                    </a>
+                                    <div class='dropdown-menu-accounts'>
+                                        <span class='login'><i class='fa-solid fa-arrow-right-to-bracket'></i>Đăng nhập</span>
+                                        <span class='logout'><i class='fa-sharp fa-solid fa-arrow-right-from-bracket'></i>Đăng
+                                            ký</span>
+                                    </div>
+                                    ";
+                                } else {
+                                    echo "
+                                    <a href='' class='accounts-link'>
+                                        <i class='fa-solid fa-user'></i>
+                                        <div class='links-text'>
+                                            <span>Tài khoản</span>
+                                            <span>Chỉnh sửa / Thoát</span>
+                                        </div>
+                                    </a>
+                                    <div class='dropdown-menu-accounts logined'>
+                                        <span class='login'><i class='fa-solid fa-user'></i>Tài khoản của tôi</span>
+                                        <span class='logout'><i class='fa-solid fa-cart-shopping'></i>Đơn hàng của tôi</span>
+                                        <span class='exit'><i class='fa-solid fa-arrow-right-to-bracket'></i>Thoát</span>
+                                    </div>
+                                    ";
+                                }
+                            ?>
                         </div>
                         <div class="cart">
                             <a href="" class="cart-link">
