@@ -201,15 +201,18 @@
         </div>
 
         <div class="body">
-            <!-- TH: Không có sản phẩm trong giỏ hành -->
-            <!-- <div class="error-not-found">
-                <h1 class="page-title">Giỏ hàng của bạn</h1>
-                <p>Giỏ hàng của bạn đang trống!</p>
-                <button type="button" class="btn btn-danger">
-                    <a href="">Tiếp tục</a>
-                </button>
-            </div> -->
-
+            <?php
+                if(!isset($_SESSION['cart']) || count($_SESSION['cart']) == 0) {
+                    echo '<!-- TH: Không có sản phẩm trong giỏ hành -->
+                    <div class="error-not-found">
+                        <h1 class="page-title">Giỏ hàng của bạn</h1>
+                        <p>Giỏ hàng của bạn đang trống!</p>
+                        <button type="button" class="btn btn-danger">
+                            <a href="">Tiếp tục</a>
+                        </button>
+                    </div>';
+                } else {
+            ?>
             <!-- TH: Có sản phẩm trong giỏ hành -->
             <div class="checkout-cart">
                 <div class="row g-0">
@@ -303,6 +306,11 @@
                     </div>
                 </div>
             </div>
+            <?php
+                }
+            ?>
+
+            
         </div>
 
         <footer>
