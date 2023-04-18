@@ -658,6 +658,16 @@ input[type=number]
     color: var(--text-white-color);
 }
 
+.update-cart {
+    height: 40px;
+    background-color: var(--text-red);
+    color: var(--text-white-color);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1.4rem;
+    margin-top: 10px;
+}
+
 /* -----------------Footer-------------------- */
 .col-2-3 {
     flex: 0 0 auto;

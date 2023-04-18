@@ -219,7 +219,7 @@
                     <div class="col-7-5">
                         <div class="cart-desc">
                             <h1>Giỏ hàng của bạn</h1>
-                            <form action="" class="cart-table">
+                            <form method="POST" action="?redirect=cart&action=update" class="cart-table cart-form">
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
@@ -235,6 +235,7 @@
                                         <?php
                                             foreach ($arr['product'] as $prd_id => $size_id) {
                                                 foreach($size_id as $size_id => $prd_detail) {
+
                                         ?>
                                             <tr>
                                                 <td>
@@ -246,7 +247,7 @@
                                                 </td>
                                                 <td class="td-quantity">
                                                     <div class="product-quantity">
-                                                        <input name="quantity" type="number" min="1" max="9" step="1" value="<?= $prd_detail['prd_quantity'] ?>">
+                                                        <input name="quantity[<?= $prd_id ?>][<?= $size_id ?>]" class="test" type="number" min="1" max="<?= $prd_detail['prd_detail_quantity'] ?>" step="1" value="<?= $prd_detail['prd_quantity'] ?>">
                                                         <span class="plus hvr-fade-for-icon">+</span>
                                                         <span class="minus hvr-fade-for-icon">-</span>
                                                     </div>
@@ -257,7 +258,7 @@
                                                     </button>
                                                 </td>
                                                 <td><?= number_format($prd_detail['prd_current_price'],0,'.','.'); ?>₫</td>
-                                                <td><?= number_format($prd_detail['prd_current_price'],0,'.','.'); ?>₫</td>
+                                                <td><?= number_format(($prd_detail['prd_current_price'] * $prd_detail['prd_quantity']),0,'.','.'); ?>₫</td>
                                             </tr>
                                         <?php
                                                 }
@@ -265,6 +266,10 @@
                                         ?>
                                     </tbody>
                                 </table>
+
+                                <div class="submit-btn">
+                                    <button class="update-cart">Cập nhật giỏ hàng</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -272,7 +277,7 @@
                         <div class="cart-payment">
                             <div class="panels-total">
                                 <h4>Thanh toán tại đây !</h4>
-                                <div class="cart-total">
+                                <form method="POST" action="?redirect=cart&action=update" class="cart-total cart-form">
                                     <table class="table table-bordered">
                                         <tbody>
                                             <tr>
@@ -295,7 +300,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>
+                                </form>
                             </div>
                             <div class="btn-payment">
                                 <button class="">
@@ -309,8 +314,6 @@
             <?php
                 }
             ?>
-
-            
         </div>
 
         <footer>
@@ -405,7 +408,8 @@
         </footer> 
     </div>
 
-    <script src="Public/Js/Client/handleQuantity.js"></script>
+    <script src="Views/Client/cart/handleMoreQuantity.js"></script>
+    <script src="Public/Js/Client/handleSubmit.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>

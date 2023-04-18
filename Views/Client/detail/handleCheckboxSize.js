@@ -22,7 +22,7 @@ listInp.forEach(input => {
     if(sizeParam === size) { // Nếu size param = value size của input thì checked
         checkedInput = input; // Cập nhật ô input mới được chọn gần nhất
         input.checked = true; // Thêm thuộc tính "checked" vào ô input mới được chọn
-        redirectURL = `?redirect=cart&action=add&prd_id=${prd_id}>&size=${sizeParam}`; // Cập nhật redirectURL với size hiện tại
+        redirectURL = `?redirect=cart&action=add&prd_id=${prd_id}&size=${sizeParam}`; // Cập nhật redirectURL với size hiện tại
         document.querySelector('.button-cart a').href = redirectURL; // Thay đổi href của thẻ a
     }
 });

@@ -27,6 +27,7 @@ function view_cart() {
                             $temp[$prd_id][$size_id]['size_number'] = $each['size_number'];
                             $temp[$prd_id][$size_id]['prd_current_price'] = $each['prd_current_price'];
                             $list_img = explode(',',$each['prd_img']);
+                            $temp[$prd_id][$size_id]['prd_detail_quantity'] = $each['prd_detail_quantity'];
                             $temp[$prd_id][$size_id]['prd_img'] = $list_img[0];
                             $temp[$prd_id][$size_id]['prd_quantity'] = $quantity;
                         }
@@ -36,7 +37,7 @@ function view_cart() {
         }
     }
 
-    $total_price = calculate_total_price();
+    // $total_price = calculate_total_price();
 
     include_once('Config/close_connect.php');
     $arr['product'] = $temp;
@@ -116,9 +117,19 @@ function del_cart() {
 
 // Cập nhật giỏ hàng
 function update_cart() {
-    $quantity = $_POST['qtt']; // Lấy số lượng sản phẩm được gửi từ giỏ hàng lên
-    foreach($quantity as $prd_id => $qtt) {
-        $_SESSION['cart'][$prd_id] = $qtt;
+    $quantity = $_POST['quantity'];
+    foreach($quantity as $prd_id => $quantity_by_size) {
+        if(isset($_SESSION['cart'][$prd_id])) {
+            foreach($quantity_by_size as $size_id => $quantity) {
+                if(isset($_SESSION['cart'][$prd_id][$size_id])) {
+                    $_SESSION['cart'][$prd_id][$size_id] = $quantity;
+                } else {
+                    $_SESSION['cart'][$prd_id][$size_id] = $quantity;
+                }
+            }
+        } else {
+            $_SESSION['cart'][$prd_id] = $quantity_by_size;
+        }
     }
 }
 

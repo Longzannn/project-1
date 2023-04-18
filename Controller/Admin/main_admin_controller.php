@@ -8,25 +8,25 @@ $action = $_GET['action'] ?? '';
 // Gọi chức năng cho Admin
 switch($controller) {
     case 'admin' : 
-        if(isset($_SESSION['user']) && isset($_SESSION['pass'])) {
+        if(isset($_SESSION['user_email']) && isset($_SESSION['user_password'])) {
             if(isset($_GET['redirect'])) {
                 switch($redirect) {
                     case 'user' : 
-                        if(isset($_SESSION['user']) && isset($_SESSION['pass'])) {
+                        if(isset($_SESSION['user_email']) && isset($_SESSION['user_password'])) {
                             require_once('Controller/Admin/User/user_controller.php');
                         }else{
                             header('location: ?controller=login&action=login');
                         }
                         ; break;
                     case 'category' : 
-                        if(isset($_SESSION['user']) && isset($_SESSION['pass'])) {
+                        if(isset($_SESSION['user_email']) && isset($_SESSION['user_password'])) {
                             require_once('Controller/Admin/category/category_controller.php');
                         }else{
                             header('location: ?controller=login&action=login');
                         }
                         ; break;
                     case 'product' : 
-                        if(isset($_SESSION['user']) && isset($_SESSION['pass'])) {
+                        if(isset($_SESSION['user_email']) && isset($_SESSION['user_password'])) {
                             require_once('Controller/Admin/Product/product_controller.php');
                         }else{
                             header('location: ?controller=login&action=login');
