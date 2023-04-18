@@ -268,16 +268,16 @@
                                 </table>
 
                                 <div class="submit-btn">
-                                    <button class="update-cart">Cập nhật giỏ hàng</button>
+                                    <button type="submit" class="update-cart">Cập nhật giỏ hàng</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                     <div class="col-4-2 ms-5">
-                        <div class="cart-payment">
+                        <form class="cart-payment" method="POST" action="?redirect=cart&action=checkaccess">
                             <div class="panels-total">
                                 <h4>Thanh toán tại đây !</h4>
-                                <form method="POST" action="?redirect=cart&action=update" class="cart-total cart-form">
+                                <div class="cart-total">
                                     <table class="table table-bordered">
                                         <tbody>
                                             <tr>
@@ -300,14 +300,28 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                </form>
+                                    <div class="form-info">
+                                        <div class="form-group">
+                                            <label>Họ & Tên</label>
+                                            <input name="customer_name" required class="form-control" placeholder="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Số Điện Thoại</label>
+                                            <input name="customer_phone" required class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Địa Chỉ</label>
+                                            <input name="customer_address" required class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="btn-payment">
-                                <button class="">
+                                <button type="submit">
                                     <a href="">THANH TOÁN</a>
                                 </button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -409,7 +423,6 @@
     </div>
 
     <script src="Views/Client/cart/handleMoreQuantity.js"></script>
-    <script src="Public/Js/Client/handleSubmit.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -32,6 +32,13 @@ switch($controller) {
                             header('location: ?controller=login&action=login');
                         }
                         ; break;
+                    case 'order' : 
+                        if(isset($_SESSION['user_email']) && isset($_SESSION['user_password'])) {
+                            require_once('Controller/Admin/Order/order_controller.php');
+                        }else{
+                            header('location: ?controller=login&action=login');
+                        }
+                        ; break;
                 }
             }else {
                 require_once('Views/Admin/dashboard/admin.php');

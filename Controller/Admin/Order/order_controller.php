@@ -2,7 +2,7 @@
     switch ($action) {
         case '':
             require_once('Model/Admin/Order/order_model.php');
-            require_once('Views/Admin/oder/order.php'); 
+            require_once('Views/Admin/order/order.php'); 
             break;
         // case 'create':
         //     require_once('Views/Admin/add_order.php');

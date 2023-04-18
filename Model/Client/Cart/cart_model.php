@@ -157,6 +157,43 @@ function calculate_total_price() {
     return $total_price;
 }
 
+function checkaccess() {
+    $customer_name = $_POST['customer_name'];
+    $customer_phone = $_POST['customer_phone'];
+    $customer_address = $_POST['customer_address'];
+    date_default_timezone_set('Asia/Bangkok');
+    $booking_date = date('Y-m-d H:i:s');
+
+    require_once('Config/connect.php');
+
+    $customer = mysqli_query($connect, "INSERT INTO customer(cus_name, cus_phone, cus_address) VALUES ('$customer_name', '$customer_phone', '$customer_address')");
+    $customer_id = $connect->insert_id;
+    $orders = mysqli_query($connect, "INSERT INTO orders(cus_id, total, booking_date) VALUES ($customer_id, 10, '$booking_date')");
+    $orders_id = $connect->insert_id;
+    if(isset($_SESSION['cart'])) {
+        foreach($_SESSION['cart'] as $prd_id => $value) {
+            foreach($value as $size_id => $quantity) {
+                // Tìm bản ghi cần thêm vào giỏ hàng
+                $sqlTemp = "SELECT product_detail.*, product.*, size.* 
+                FROM product_detail
+                INNER JOIN product ON product.prd_id = product_detail.prd_id
+                INNER JOIN size ON product_detail.size_id = size.size_id
+                WHERE product.prd_id = '$prd_id'AND product_detail.size_id = '$size_id' ";
+                $resultTemp = mysqli_query($connect, $sqlTemp);
+                // Lặp mảng để lấy ra chi tiết từng bản ghi
+                foreach ($resultTemp as $each){
+                    $prd_detail_id = $each['prd_detail_id'];
+                    // $prd_detail_quantity = $quantity;
+                    $orders_detail = mysqli_query($connect, "INSERT INTO orders_detail(orders_id, prd_detail_id) VALUES ($orders_id, $prd_detail_id)");
+                }
+            }
+        }
+    }
+
+    require_once('Config/close_connect.php');
+    unset($_SESSION['cart']);
+}
+
 
 // Trả kết quả về Controller
 switch($action) {
@@ -164,6 +201,7 @@ switch($action) {
     case 'add': add_cart(); break;
     case 'update': update_cart(); break;
     case 'del': del_cart(); break;
+    case 'checkaccess': checkaccess(); break;
 
 }
 

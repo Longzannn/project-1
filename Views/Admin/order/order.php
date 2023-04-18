@@ -122,7 +122,7 @@
                         </a>
                     </li>
                     <li class="nav-item nav-item--active hvr-fade-for-nav-admin">
-                        <a href="">
+                        <a href="?controller=admin&redirect=order">
                             <i class="fa-solid fa-list"></i>
                             <span>Quản lí đơn hàng</span>
                         </a>
@@ -167,34 +167,33 @@
                         <div class="col-lg-12">
                             <div class="page-user">
                                 <div class="page-table">
-                                   <div class="page-add">
-                                    <a href="add_user.php" class="add-user">
-                                        <i class="fa-solid fa-plus"></i>
-                                        <span>Thêm đơn hàng</span>
-                                    </a>
-                                   </div>
                                     <div class="table-user">
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th>STT</th>
-                                                    <th>Mã Đơn</th>
-                                                    <th>Tình Trạng</th>
-                                                    <th>Khách Hàng</th>
-                                                    <th>Điện thoại</th>
-                                                    <th>Sản Phẩm</th>
-                                                    <th>Số Lượng</th>
-                                                    <th>Tổng Tiền</th>
-                                                    <th>Quản Lý</th>
+                                                    <th width="">STT</th>
+                                                    <th width="">Mã Đơn</th>
+                                                    <th width="">Tình Trạng</th>
+                                                    <th width="">Khách Hàng</th>
+                                                    <th width="">Điện thoại</th>
+                                                    <th width="">Sản Phẩm</th>
+                                                    <th width="">Số Lượng</th>
+                                                    <th width="">Tổng Tiền</th>
+                                                    <th width="">Quản Lý</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php
+                                                    $stt = 0;
+                                                    foreach($record as $order_detail) {
+                                                        $stt++;
+                                                ?>
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>MD2034</td>
+                                                    <td><?= $stt ?></td>
+                                                    <td>MD20<?= $order_detail['orders_id'] ?></td>
                                                     <td><span class="sending">Đang Gửi</span></td>
-                                                    <td>Nguyễn Văn A</td>
-                                                    <td>0123456789</td>
+                                                    <td><?= $order_detail['cus_name'] ?></td>
+                                                    <td><?= $order_detail['cus_phone'] ?></td>
                                                     <td>Iphone 14 Promax</td>
                                                     <td>2</td>
                                                     <td>50,000,000</td>
@@ -203,62 +202,9 @@
                                                         <button type="button" class="btn btn-danger"><a href="">Xóa</a></button>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>MD2034</td>
-                                                    <td><span class="sending">Đang Gửi</span></td>
-                                                    <td>Nguyễn Văn A</td>
-                                                    <td>0123456789</td>
-                                                    <td>Iphone 14 Promax</td>
-                                                    <td>2</td>
-                                                    <td>50,000,000</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-info"><a href="">Sửa</a></button>
-                                                        <button type="button" class="btn btn-danger"><a href="">Xóa</a></button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>MD2034</td>
-                                                    <td><span class="sending">Đang Gửi</span></td>
-                                                    <td>Nguyễn Văn A</td>
-                                                    <td>0123456789</td>
-                                                    <td>Iphone 14 Promax</td>
-                                                    <td>2</td>
-                                                    <td>50,000,000</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-info"><a href="">Sửa</a></button>
-                                                        <button type="button" class="btn btn-danger"><a href="">Xóa</a></button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>MD2034</td>
-                                                    <td><span class="sent">Đã Gửi</span></td>
-                                                    <td>Nguyễn Văn A</td>
-                                                    <td>0123456789</td>
-                                                    <td>Iphone 14 Promax</td>
-                                                    <td>2</td>
-                                                    <td>50,000,000</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-info"><a href="">Sửa</a></button>
-                                                        <button type="button" class="btn btn-danger"><a href="">Xóa</a></button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>MD2034</td>
-                                                    <td><span class="sent">Đã Gửi</span></td>
-                                                    <td>Nguyễn Văn A</td>
-                                                    <td>0123456789</td>
-                                                    <td>Iphone 14 Promax</td>
-                                                    <td>2</td>
-                                                    <td>50,000,000</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-info"><a href="">Sửa</a></button>
-                                                        <button type="button" class="btn btn-danger"><a href="">Xóa</a></button>
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                    }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
