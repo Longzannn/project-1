@@ -1,15 +1,40 @@
 <?php
     function index() {
         include_once('Config/connect.php');
+        $limit = 5; // Số bản ghi trên 1 trang
+        $sqlTotalRecords = "SELECT count(prd_id) as total FROM product";
+        $queryTotalRecords = mysqli_query(mysqli_connect('localhost', 'root', '', 'submit'), $sqlTotalRecords);
+        $result = mysqli_fetch_assoc($queryTotalRecords);
+        $total_records = $result['total']; // Tổng số bản ghi
+        $total_page = ceil($total_records / $limit); // Tổng số trang 
+        if(isset($_GET['current_page'])) {
+            $current_page = $_GET['current_page']; // Lấy trang trên đường dẫn
+        } else {
+            $current_page = 1; // Trường hợp k có thông tin trang trên đường dẫn thì mặc định sẽ là trang 1
+        }
+        //Trường hợp bấm nút trở về trang trước
+        if($current_page < 1) {
+            $current_page = 1;
+        }
+        //Trường hợp bấm nút trang sau ở trang cuối cùng
+        if($current_page > $total_page) {
+            $current_page = $total_page;
+        }
+        //Tìm chỉ số start
+        $start = ($current_page - 1) * $limit;
+
         $sql_cate = "SELECT * FROM category ORDER BY cat_id ASC";
         $query_cate = mysqli_query($connect, $sql_cate);
-        $sql_prd = "SELECT * FROM product";
+        $sql_prd = "SELECT * FROM product LIMIT $start, $limit";
+        // $sql_prd = "SELECT * FROM product";
         $query_prd = mysqli_query($connect, $sql_prd);
+
         include_once('Config/close_connect.php');
         $arr = array();
         $arr['category'] = $query_cate;
         $arr['product'] = $query_prd;
-        
+        $arr['current_page'] = $current_page;
+        $arr['total_page'] = $total_page;
         return $arr;
     }
     function create() {

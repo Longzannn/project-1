@@ -307,7 +307,7 @@
                                                 </i> Kho hàng: 
                                                 <b> 
                                                     <?php
-                                                        $connect = mysqli_connect('localhost', 'root', '', 'test');
+                                                        $connect = mysqli_connect('localhost', 'root', '', 'submit');
 
                                                         $prd_id = (int)$_GET['prd_id'];
 

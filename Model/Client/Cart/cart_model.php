@@ -54,7 +54,7 @@ function add_cart() {
     if(isset($_GET['size'])) {
         $size = (int)$_GET['size'];
 
-        $connect = mysqli_connect('localhost', 'root', '', 'test');
+        $connect = mysqli_connect('localhost', 'root', '', 'submit');
         $product_detail_query = mysqli_query($connect, "SELECT * FROM product_detail
         JOIN product ON product_detail.prd_id = product.prd_id
         JOIN size ON product_detail.size_id = size.size_id
@@ -93,7 +93,7 @@ function del_cart() {
     if(isset($_GET['size'])) {
         $size = (int)$_GET['size'];
 
-        $connect = mysqli_connect('localhost', 'root', '', 'test');
+        $connect = mysqli_connect('localhost', 'root', '', 'submit');
         $product_detail_query = mysqli_query($connect, "SELECT * FROM product_detail
         JOIN product ON product_detail.prd_id = product.prd_id
         JOIN size ON product_detail.size_id = size.size_id
@@ -136,7 +136,7 @@ function update_cart() {
 function calculate_total_price() {
     $total_price = 0;
     if(isset($_SESSION['cart'])) {
-        $connect = mysqli_connect('localhost', 'root', '', 'test');
+        $connect = mysqli_connect('localhost', 'root', '', 'submit');
         foreach($_SESSION['cart'] as $prd_id => $value) {
             foreach($value as $size_id => $quantity) {
                 $sqlTemp = "SELECT product_detail.*, product.*, size.* 

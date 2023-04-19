@@ -250,18 +250,41 @@
                             <div class="col-lg-12 d-flex justify-content-center">
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination">
-                                        <li class="page-item">
-                                            <a class="page-link" href="" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="">2</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
+                                        <?php
+                                            $current_page = $arr['current_page'];
+                                            $total_page = $arr['total_page'];
+                                        ?>
+                                        <?php
+                                            if($current_page > 1 && $total_page > 1) {
+                                                $prev = $current_page - 1;
+                                                echo '  <li class="page-item">
+                                                            <a class="page-link" href="index.php?controller=admin&redirect=product&current_page='.$prev.'" aria-label="Previous">
+                                                                <span aria-hidden="true">&laquo;</span>
+                                                            </a>
+                                                        </li>';
+                                            }
+                                        ?>
+
+                                        <?php
+                                            for($i = 1; $i < $total_page; $i++) {
+                                                if($i == $current_page ) {
+                                                    echo '<li class="page-item active"><a class="page-link" href="#">'.$i.'</a></li>';
+                                                } else {
+                                                    echo '<li class="page-item"><a class="page-link" href="index.php?controller=admin&redirect=product&current_page='.$i.'">'.$i.'</a></li>';
+                                                }
+                                            }
+                                        ?>
+
+                                        <?php
+                                            if($current_page < $total_page && $total_page > 1) {
+                                                $next = $current_page + 1;
+                                                echo '  <li class="page-item">
+                                                            <a class="page-link" href="index.php?controller=admin&redirect=product&current_page='.$next.'" aria-label="Next">
+                                                                <span aria-hidden="true">&raquo;</span>
+                                                            </a>
+                                                        </li>';
+                                            }
+                                        ?>
                                     </ul>
                                 </nav>
                             </div>
