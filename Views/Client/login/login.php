@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="Public/Css/Client/base/reset.css">
     <link rel="stylesheet" type="text/css" href="Public/Css/Client/base/root.css">
     <link rel="stylesheet" href="Public/Css/Client/Effects/hover.css">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="Views/Client/login/login.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <div class="site-wrapper">
@@ -28,32 +28,39 @@
                     </form>
                     <div class="classic-wrapper">
                         <div class="accounts">
-                            <!-- Chưa login -->
-                            <a href="" class="accounts-link">
-                                <i class="fa-solid fa-user"></i>
-                                <div class="links-text">
-                                    <span>Tài khoản</span>
-                                    <span>Đăng nhập/ Đăng ký</span>
-                                </div>
-                            </a>
-                            <div class="dropdown-menu-accounts">
-                                <span class="login"><i class="fa-solid fa-arrow-right-to-bracket"></i>Đăng nhập</span>
-                                <span class="logout"><i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>Đăng ký</span>
-                            </div>
-
-                            <!-- Đã login -->
-                            <!-- <a href="" class="accounts-link">
-                                <i class="fa-solid fa-user"></i>
-                                <div class="links-text">
-                                    <span>Tài khoản</span>
-                                    <span>Chỉnh sửa / Thoát</span>
-                                </div>
-                            </a>
-                            <div class="dropdown-menu-accounts logined">
-                                <span class="login"><i class="fa-solid fa-user"></i>Tài khoản của tôi</span>
-                                <span class="logout"><i class="fa-solid fa-cart-shopping"></i>Đơn hàng của tôi</span>
-                                <span class="exit"><i class="fa-solid fa-arrow-right-to-bracket"></i>Thoát</span>
-                            </div> -->
+                            <?php
+                                if(!isset($_SESSION['user_email'])) {
+                                    echo "
+                                    <a href='' class='accounts-link'>
+                                        <i class='fa-solid fa-user'></i>
+                                        <div class='links-text'>
+                                            <span>Tài khoản</span>
+                                            <span>Đăng nhập/ Đăng ký</span>
+                                        </div>
+                                    </a>
+                                    <div class='dropdown-menu-accounts'>
+                                        <span class='login'><i class='fa-solid fa-arrow-right-to-bracket'></i>Đăng nhập</span>
+                                        <span class='logout'><i class='fa-sharp fa-solid fa-arrow-right-from-bracket'></i>Đăng
+                                            ký</span>
+                                    </div>
+                                    ";
+                                } else {
+                                    echo "
+                                    <a href='' class='accounts-link'>
+                                        <i class='fa-solid fa-user'></i>
+                                        <div class='links-text'>
+                                            <span>Tài khoản</span>
+                                            <span>Chỉnh sửa / Thoát</span>
+                                        </div>
+                                    </a>
+                                    <div class='dropdown-menu-accounts logined'>
+                                        <span class='login'><i class='fa-solid fa-user'></i>Tài khoản của tôi</span>
+                                        <span class='logout'><i class='fa-solid fa-cart-shopping'></i>Đơn hàng của tôi</span>
+                                        <span class='exit'><i class='fa-solid fa-arrow-right-to-bracket'></i><a href='index.php?controller=login&action=logout'>Thoát</a></span>
+                                    </div>
+                                    ";
+                                }
+                            ?>
                         </div>
                         <div class="cart">
                             <a href="?redirect=cart" class="cart-link hvr-icon-grow">
@@ -165,7 +172,7 @@
                             <?php
                                 include_once('Views/Client/menu/menu.php');
                             ?>
-                                                        <li class="menu-item hvr-float-shadow ">
+                            <li class="menu-item hvr-float-shadow ">
                                 <a href="" class="item-link">
                                     <span class="item-name item-name--supersale"><i class="fa-brands fa-salesforce"></i>SIÊU SALES</span>
                                 </a>
@@ -213,14 +220,14 @@
                             </div>
                             <div class="col-6">
                                 <div class="login">
-                                    <h2>THÔNG TIN ĐĂNG KÝ</h2>
-                                    <form action="">
+                                    <h2>THÔNG TIN ĐĂNG NHẬP</h2>
+                                    <form method="POST" action="index.php?controller=login&action=checklogin">
                                         <div class="register-form">
-                                            <input type="text" placeholder="Điện thoại: " name="email" id="phone" required>
-                                            <input type="password" placeholder="Mật khẩu: " name="password" id="password" required>
+                                            <input type="email" placeholder="Email: " name="user_email" id="phone" required>
+                                            <input type="password" placeholder="Mật khẩu: " name="user_password" id="password" required>
                                             <button type="submit" class="loginbtn"><a>ĐĂNG NHẬP</a></button>
                                         </div>
-                                      </form>
+                                    </form>
                                 </div>
                             </div>
                         </div>

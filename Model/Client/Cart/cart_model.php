@@ -161,6 +161,7 @@ function checkaccess() {
     $customer_name = $_POST['customer_name'];
     $customer_phone = $_POST['customer_phone'];
     $customer_address = $_POST['customer_address'];
+    $price = $_POST['price'];
     date_default_timezone_set('Asia/Bangkok');
     $booking_date = date('Y-m-d H:i:s');
 
@@ -168,7 +169,7 @@ function checkaccess() {
 
     $customer = mysqli_query($connect, "INSERT INTO customer(cus_name, cus_phone, cus_address) VALUES ('$customer_name', '$customer_phone', '$customer_address')");
     $customer_id = $connect->insert_id;
-    $orders = mysqli_query($connect, "INSERT INTO orders(cus_id, total, booking_date) VALUES ($customer_id, 10, '$booking_date')");
+    $orders = mysqli_query($connect, "INSERT INTO orders(cus_id, total, booking_date) VALUES ($customer_id, $price, '$booking_date')");
     $orders_id = $connect->insert_id;
     if(isset($_SESSION['cart'])) {
         foreach($_SESSION['cart'] as $prd_id => $value) {
@@ -183,8 +184,8 @@ function checkaccess() {
                 // Lặp mảng để lấy ra chi tiết từng bản ghi
                 foreach ($resultTemp as $each){
                     $prd_detail_id = $each['prd_detail_id'];
-                    // $prd_detail_quantity = $quantity;
-                    $orders_detail = mysqli_query($connect, "INSERT INTO orders_detail(orders_id, prd_detail_id) VALUES ($orders_id, $prd_detail_id)");
+                    $prd_detail_quantity = $quantity;
+                    $orders_detail = mysqli_query($connect, "INSERT INTO orders_detail(orders_id, prd_detail_id, price, quantity) VALUES ($orders_id, $prd_detail_id, $price, $prd_detail_quantity)");
                 }
             }
         }

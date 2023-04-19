@@ -56,7 +56,7 @@
                                     <div class='dropdown-menu-accounts logined'>
                                         <span class='login'><i class='fa-solid fa-user'></i>Tài khoản của tôi</span>
                                         <span class='logout'><i class='fa-solid fa-cart-shopping'></i>Đơn hàng của tôi</span>
-                                        <span class='exit'><i class='fa-solid fa-arrow-right-to-bracket'></i>Thoát</span>
+                                        <span class='exit'><i class='fa-solid fa-arrow-right-to-bracket'></i><a href='index.php?controller=login&action=logout'>Thoát</a></span>
                                     </div>
                                     ";
                                 }

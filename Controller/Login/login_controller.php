@@ -5,7 +5,8 @@ if(isset($_GET['action'])) {
 }
 switch($action) {
     case 'login' : 
-        include_once('Views/Admin/login-logout/login.php'); 
+        include_once('Model/Login/login_model.php'); 
+        include_once('Views/Client/login/login.php'); 
         break;
     case 'checklogin' :
         require_once('Model/Login/login_model.php');
@@ -16,7 +17,7 @@ switch($action) {
                 header('location: index.php?');
             }
         } else{
-            include_once('Views/Admin/login-logout/login.php');
+            include_once('Views/Client/login/login.php');
         }
         ; break;
     case 'logout' : 

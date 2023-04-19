@@ -56,7 +56,7 @@
                                     <div class='dropdown-menu-accounts logined'>
                                         <span class='login'><i class='fa-solid fa-user'></i>Tài khoản của tôi</span>
                                         <span class='logout'><i class='fa-solid fa-cart-shopping'></i>Đơn hàng của tôi</span>
-                                        <span class='exit'><i class='fa-solid fa-arrow-right-to-bracket'></i>Thoát</span>
+                                        <span class='exit'><i class='fa-solid fa-arrow-right-to-bracket'></i><a href='index.php?controller=login&action=logout'>Thoát</a></span>
                                     </div>
                                     ";
                                 }
@@ -283,19 +283,19 @@
                                             <tr>
                                                 <td style="font-weight: 700;">Thành tiền:</td>
                                                 <td>
-                                                    <?php
+                                                    <input class="td-input" type="text" readonly value="<?php
                                                         $total_price = calculate_total_price();
                                                         echo number_format($total_price);
-                                                    ?>
+                                                    ?> ">   
                                                 ₫</td>
                                             </tr>
                                             <tr>
                                                 <td style="font-weight: 700;">Tổng cộng:</td>
                                                 <td>
-                                                    <?php
+                                                    <input class="td-input" name="price" type="text" readonly value="<?php
                                                         $total_price = calculate_total_price();
                                                         echo number_format($total_price);
-                                                    ?>    
+                                                    ?> ">   
                                                 ₫</td>
                                             </tr>
                                         </tbody>

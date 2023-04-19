@@ -175,7 +175,7 @@
                                                     <th width="">Mã Đơn</th>
                                                     <th width="">Tình Trạng</th>
                                                     <th width="">Khách Hàng</th>
-                                                    <th width="">Điện thoại</th>
+                                                    <th width="">Số Điện thoại</th>
                                                     <th width="">Sản Phẩm</th>
                                                     <th width="">Số Lượng</th>
                                                     <th width="">Tổng Tiền</th>
@@ -185,18 +185,26 @@
                                             <tbody>
                                                 <?php
                                                     $stt = 0;
-                                                    foreach($record as $order_detail) {
+                                                    foreach($record['orders_detail'] as $order_detail) {
                                                         $stt++;
                                                 ?>
                                                 <tr>
                                                     <td><?= $stt ?></td>
-                                                    <td>MD20<?= $order_detail['orders_id'] ?></td>
+                                                    <td>MD200<?= $order_detail['orders_id'] ?></td>
                                                     <td><span class="sending">Đang Gửi</span></td>
                                                     <td><?= $order_detail['cus_name'] ?></td>
                                                     <td><?= $order_detail['cus_phone'] ?></td>
-                                                    <td>Iphone 14 Promax</td>
-                                                    <td>2</td>
-                                                    <td>50,000,000</td>
+                                                    <td>
+                                                        <?php
+                                                            foreach($record['product_detail'] as $prd_detail) {
+                                                                if($prd_detail['prd_detail_id'] == $order_detail['prd_detail_id']) {
+                                                                    echo $prd_detail['prd_name'];
+                                                                }
+                                                            }
+                                                        ?>
+                                                    </td>
+                                                    <td><?= $order_detail['quantity'] ?></td>
+                                                    <td><?= $order_detail['price'] ?></td>
                                                     <td>
                                                         <button type="button" class="btn btn-info"><a href="">Sửa</a></button>
                                                         <button type="button" class="btn btn-danger"><a href="">Xóa</a></button>

@@ -1,4 +1,12 @@
 <?php
+function index() {
+    include_once('Config/connect.php');
+    $category = mysqli_query($connect, "SELECT * FROM category");
+    include_once('Config/close_connect.php');
+    $arr = array();
+    $arr['category'] = $category;
+    return $arr;
+}
 function checklogin() {
     include_once('Config/connect.php');
     $user_email = $_POST['user_email'];
@@ -20,6 +28,11 @@ function checklogin() {
     include_once('Config/close_connect.php');
 }
 switch($action) {
-    case 'checklogin' : $check = checklogin(); break;
+    case 'checklogin' : 
+        $check = checklogin(); 
+        break;
+    case 'login':
+        $arr = index();
+        break;
 }
 ?>
