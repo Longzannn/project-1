@@ -196,7 +196,7 @@
             <ul class="breadcrumb-list">
                 <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
                 <li class="breadcrumb-item"><a href="">Tài khoản</a></li>
-                <li class="breadcrumb-item"><a href="">Đăng ký</a></li>
+                <li class="breadcrumb-item"><a href="">Đăng nhập</a></li>
             </ul>
         </div>
         <div class="body">

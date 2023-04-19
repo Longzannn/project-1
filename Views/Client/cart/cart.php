@@ -196,7 +196,7 @@
         <div class="breadcrumd">
             <ul class="breadcrumb-list">
                 <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
-                <li class="breadcrumb-item"><a href="">Giày Adidas chính hãng</a></li>
+                <li class="breadcrumb-item"><a href="">Giỏ hàng</a></li>
             </ul>
         </div>
 

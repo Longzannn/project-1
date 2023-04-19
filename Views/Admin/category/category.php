@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://myshoes.vn/image/catalog/logo/logo-myshoes-nho.png" rel="icon">
     <title>Quản lí danh mục</title>
     <link rel="stylesheet" href="Public/Css/Admin/admin.css">
     <link rel="stylesheet" href="Public/Css/Admin/user.css">

@@ -195,7 +195,7 @@
         <div class="breadcrumd">
             <ul class="breadcrumb-list">
                 <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
-                <li class="breadcrumb-item"><a href="">Giày Adidas chính hãng</a></li>
+                <li class="breadcrumb-item"><a href="">Danh mục sản phẩm</a></li>
             </ul>
         </div>
 
@@ -389,7 +389,7 @@
 
                 <div class="col-9 px-0 max-width-80">
                     <div class="content">
-                        <h1 class="page-title">giày adidas chính hãng</h1>
+                        <h1 class="page-title">Giày Chính Hãng</h1>
                         <div class="category-desc">
                             <img src="https://myshoes.vn/image/cache/catalog/2022/banner/cata/giay-nike-chinh-hang-1140x500.png" alt="Giày Adidas Chính Hãng" title="Giày Adidas Chính Hãng" class="category-image">
                         </div>
