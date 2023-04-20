@@ -283,19 +283,19 @@
                                             <tr>
                                                 <td style="font-weight: 700;">Thành tiền:</td>
                                                 <td>
-                                                    <input class="td-input" type="text" readonly value="<?php
-                                                        $total_price = calculate_total_price();
-                                                        echo number_format($total_price);
-                                                    ?> ">   
+                                                <input class="td-input" type="text" readonly value="<?php
+                                                    $total_price = calculate_total_price();
+                                                    echo $total_price;
+                                                ?>">   
                                                 ₫</td>
                                             </tr>
                                             <tr>
                                                 <td style="font-weight: 700;">Tổng cộng:</td>
                                                 <td>
-                                                    <input class="td-input" name="price" type="text" readonly value="<?php
-                                                        $total_price = calculate_total_price();
-                                                        echo number_format($total_price);
-                                                    ?> ">   
+                                                <input class="td-input" name="price" type="text" readonly value="<?php
+                                                    $total_price = calculate_total_price();
+                                                    echo $total_price;
+                                                ?>"> 
                                                 ₫</td>
                                             </tr>
                                         </tbody>

@@ -54,7 +54,7 @@ function add_cart() {
     if(isset($_GET['size'])) {
         $size = (int)$_GET['size'];
 
-        $connect = mysqli_connect('localhost', 'root', '', 'submit');
+        $connect = mysqli_connect('localhost', 'root', '', 'project1');
         $product_detail_query = mysqli_query($connect, "SELECT * FROM product_detail
         JOIN product ON product_detail.prd_id = product.prd_id
         JOIN size ON product_detail.size_id = size.size_id
@@ -93,7 +93,7 @@ function del_cart() {
     if(isset($_GET['size'])) {
         $size = (int)$_GET['size'];
 
-        $connect = mysqli_connect('localhost', 'root', '', 'submit');
+        $connect = mysqli_connect('localhost', 'root', '', 'project1');
         $product_detail_query = mysqli_query($connect, "SELECT * FROM product_detail
         JOIN product ON product_detail.prd_id = product.prd_id
         JOIN size ON product_detail.size_id = size.size_id
@@ -136,7 +136,7 @@ function update_cart() {
 function calculate_total_price() {
     $total_price = 0;
     if(isset($_SESSION['cart'])) {
-        $connect = mysqli_connect('localhost', 'root', '', 'submit');
+        $connect = mysqli_connect('localhost', 'root', '', 'project1');
         foreach($_SESSION['cart'] as $prd_id => $value) {
             foreach($value as $size_id => $quantity) {
                 $sqlTemp = "SELECT product_detail.*, product.*, size.* 
@@ -167,9 +167,18 @@ function checkaccess() {
 
     require_once('Config/connect.php');
 
+    $user_email = $_SESSION['user_email'];
+    $user_password = $_SESSION['user_password'];
+    $user = mysqli_query($connect, "SELECT * FROM user WHERE user_email = '$user_email' AND user_password = '$user_password'");
+    foreach ($user as $item) {
+        $_SESSION['user_id'] = $item['user_id'];
+    }
+    $user_id = $_SESSION['user_id'];
+    
+
     $customer = mysqli_query($connect, "INSERT INTO customer(cus_name, cus_phone, cus_address) VALUES ('$customer_name', '$customer_phone', '$customer_address')");
     $customer_id = $connect->insert_id;
-    $orders = mysqli_query($connect, "INSERT INTO orders(cus_id, total, booking_date) VALUES ($customer_id, $price, '$booking_date')");
+    $orders = mysqli_query($connect, "INSERT INTO orders(cus_id, total, booking_date, orders_status) VALUES ($customer_id, '$price', '$booking_date', 0)");
     $orders_id = $connect->insert_id;
     if(isset($_SESSION['cart'])) {
         foreach($_SESSION['cart'] as $prd_id => $value) {
@@ -185,7 +194,7 @@ function checkaccess() {
                 foreach ($resultTemp as $each){
                     $prd_detail_id = $each['prd_detail_id'];
                     $prd_detail_quantity = $quantity;
-                    $orders_detail = mysqli_query($connect, "INSERT INTO orders_detail(orders_id, prd_detail_id, price, quantity) VALUES ($orders_id, $prd_detail_id, $price, $prd_detail_quantity)");
+                    $orders_detail = mysqli_query($connect, "INSERT INTO orders_detail(orders_id, prd_detail_id, user_id, price, quantity) VALUES ($orders_id, $prd_detail_id, $user_id, '$price', $prd_detail_quantity)");
                 }
             }
         }

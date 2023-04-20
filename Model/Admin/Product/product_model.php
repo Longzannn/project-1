@@ -3,7 +3,7 @@
         include_once('Config/connect.php');
         $limit = 5; // Số bản ghi trên 1 trang
         $sqlTotalRecords = "SELECT count(prd_id) as total FROM product";
-        $queryTotalRecords = mysqli_query(mysqli_connect('localhost', 'root', '', 'submit'), $sqlTotalRecords);
+        $queryTotalRecords = mysqli_query(mysqli_connect('localhost', 'root', '', 'project1'), $sqlTotalRecords);
         $result = mysqli_fetch_assoc($queryTotalRecords);
         $total_records = $result['total']; // Tổng số bản ghi
         $total_page = ceil($total_records / $limit); // Tổng số trang 

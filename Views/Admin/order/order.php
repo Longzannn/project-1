@@ -173,13 +173,13 @@
                                             <thead>
                                                 <tr>
                                                     <th width="">STT</th>
-                                                    <th width="">Mã Đơn</th>
                                                     <th width="">Tình Trạng</th>
                                                     <th width="">Khách Hàng</th>
                                                     <th width="">Số Điện thoại</th>
                                                     <th width="">Sản Phẩm</th>
                                                     <th width="">Số Lượng</th>
                                                     <th width="">Tổng Tiền</th>
+                                                    <th width="">Lần Chỉnh Sửa Cuối</th>
                                                     <th width="">Quản Lý</th>
                                                 </tr>
                                             </thead>
@@ -191,8 +191,13 @@
                                                 ?>
                                                 <tr>
                                                     <td><?= $stt ?></td>
-                                                    <td>MD200<?= $order_detail['orders_id'] ?></td>
-                                                    <td><span class="sending">Đang Gửi</span></td>
+                                                    <td><?php
+                                                        if($order_detail['orders_status'] == 0) {
+                                                            echo '<span class="sending">Đang Gửi</span>';
+                                                        } else {
+                                                            echo '<span class="sent">Đã Gửi</span>';
+                                                        }
+                                                    ?></td>
                                                     <td><?= $order_detail['cus_name'] ?></td>
                                                     <td><?= $order_detail['cus_phone'] ?></td>
                                                     <td>
@@ -205,10 +210,11 @@
                                                         ?>
                                                     </td>
                                                     <td><?= $order_detail['quantity'] ?></td>
-                                                    <td><?= $order_detail['price'] ?></td>
+                                                    <td><?= $order_detail['price'] ?>₫</td>
+                                                    <td><?= $order_detail['user_name'] ?></td>
                                                     <td>
-                                                        <button type="button" class="btn btn-info"><a href="">Sửa</a></button>
-                                                        <button type="button" class="btn btn-danger"><a href="">Xóa</a></button>
+                                                        <button type="button" class="btn btn-info"><a href="?controller=<?= $controller ?>&redirect=<?= $redirect ?>&action=confirm&orders_id=<?= $order_detail['orders_id'] ?>">&radic;</a></button>
+                                                        <button type="button" class="btn btn-danger"><a href="?controller=<?= $controller ?>&redirect=<?= $redirect ?>&action=destroy&orders_id=<?= $order_detail['orders_id'] ?>&prd_detail_id=<?= $order_detail['prd_detail_id'] ?>&cus_id=<?= $order_detail['cus_id'] ?>">X</a></button>
                                                     </td>
                                                 </tr>
                                                 <?php
