@@ -150,7 +150,8 @@
 }
 
 .dropdown-menu-accounts span:nth-child(1),
-.dropdown-menu-accounts span:nth-child(2) {
+.dropdown-menu-accounts span:nth-child(2),
+.dropdown-menu-accounts span:nth-child(3) {
     border-bottom: 1px solid #ccc;
 }
 

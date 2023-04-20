@@ -33,9 +33,9 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="index.php?">
                                 <i class="fa-solid fa-money-check"></i>
-                                My balance
+                                Website
                             </a>
                         </li>
                         <li>
@@ -173,14 +173,14 @@
                                             <thead>
                                                 <tr>
                                                     <th width="">STT</th>
-                                                    <th width="">Tình Trạng</th>
+                                                    <th width="10%">Tình Trạng</th>
                                                     <th width="">Khách Hàng</th>
                                                     <th width="">Số Điện thoại</th>
                                                     <th width="">Sản Phẩm</th>
                                                     <th width="">Số Lượng</th>
                                                     <th width="">Tổng Tiền</th>
                                                     <th width="">Lần Chỉnh Sửa Cuối</th>
-                                                    <th width="">Quản Lý</th>
+                                                    <th width="15%">Quản Lý</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -214,6 +214,7 @@
                                                     <td><?= $order_detail['user_name'] ?></td>
                                                     <td>
                                                         <button type="button" class="btn btn-info"><a href="?controller=<?= $controller ?>&redirect=<?= $redirect ?>&action=confirm&orders_id=<?= $order_detail['orders_id'] ?>">&radic;</a></button>
+                                                        <button type="button" class="btn btn-info"><a href="?controller=<?= $controller ?>&redirect=<?= $redirect ?>&action=back&orders_id=<?= $order_detail['orders_id'] ?>">&crarr;</a></button>
                                                         <button type="button" class="btn btn-danger"><a href="?controller=<?= $controller ?>&redirect=<?= $redirect ?>&action=destroy&orders_id=<?= $order_detail['orders_id'] ?>&prd_detail_id=<?= $order_detail['prd_detail_id'] ?>&cus_id=<?= $order_detail['cus_id'] ?>">X</a></button>
                                                     </td>
                                                 </tr>

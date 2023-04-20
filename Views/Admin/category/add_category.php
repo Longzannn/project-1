@@ -34,9 +34,9 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="index.php?">
                                 <i class="fa-solid fa-money-check"></i>
-                                My balance
+                                Website
                             </a>
                         </li>
                         <li>

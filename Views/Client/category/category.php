@@ -55,6 +55,7 @@
                                     </a>
                                     <div class='dropdown-menu-accounts logined'>
                                         <span class='login'><i class='fa-solid fa-user'></i>Tài khoản của tôi</span>
+                                        <span class='logout'><a href='?controller=admin'>&diams; Trang quản trị</a></span>
                                         <span class='logout'><i class='fa-solid fa-cart-shopping'></i>Đơn hàng của tôi</span>
                                         <span class='exit'><i class='fa-solid fa-arrow-right-to-bracket'></i><a href='index.php?controller=login&action=logout'>Thoát</a></span>
                                     </div>
@@ -210,26 +211,6 @@
                         </div>
                         <div class="module-body">
                             <div class="panel-group">
-                                <div class="module-item">
-                                    <div class="panel-heading">
-                                        <span class="panel-title">Danh mục</span>
-                                        <i class="arrow-down fa-solid fa-arrow-down"></i>
-                                    </div>
-                                    <div class="panel-collapse">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                            <label class="form-check-label hvr-shrink" for="flexCheckDefault">
-                                              Giày Adidas Nam
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                            <label class="form-check-label hvr-shrink" for="flexCheckChecked">
-                                              Giày Adidas Nữ
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="module-item">
                                     <div class="panel-heading">
                                         <span class="panel-title">Thương Hiệu</span>

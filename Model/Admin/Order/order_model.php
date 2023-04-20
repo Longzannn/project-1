@@ -22,8 +22,33 @@
     function confirm() {
         $orders_id = $_GET['orders_id'];
         include_once('Config/connect.php');
-        $sql = "UPDATE orders SET orders_status = 1 WHERE orders_id = $orders_id";
-        $record = mysqli_query($connect, $sql);
+        $update_orders = mysqli_query($connect, "UPDATE orders SET orders_status = 1 WHERE orders_id = $orders_id");
+
+        $user_email = $_SESSION['user_email'];
+        $user_password = $_SESSION['user_password'];
+        $user = mysqli_query($connect, "SELECT * FROM user WHERE user_email = '$user_email' AND user_password = '$user_password'");
+        foreach ($user as $item) {
+            $_SESSION['user_id'] = $item['user_id'];
+        }
+        $user_id = $_SESSION['user_id'];
+        $update_orders_detail = mysqli_query($connect, "UPDATE orders_detail SET user_id = $user_id WHERE orders_id = $orders_id");
+
+        include_once('Config/close_connect.php');
+    }
+    function back() {
+        $orders_id = $_GET['orders_id'];
+        include_once('Config/connect.php');
+        $update_orders = mysqli_query($connect, "UPDATE orders SET orders_status = 0 WHERE orders_id = $orders_id");
+
+        $user_email = $_SESSION['user_email'];
+        $user_password = $_SESSION['user_password'];
+        $user = mysqli_query($connect, "SELECT * FROM user WHERE user_email = '$user_email' AND user_password = '$user_password'");
+        foreach ($user as $item) {
+            $_SESSION['user_id'] = $item['user_id'];
+        }
+        $user_id = $_SESSION['user_id'];
+        $update_orders_detail = mysqli_query($connect, "UPDATE orders_detail SET user_id = $user_id WHERE orders_id = $orders_id");
+
         include_once('Config/close_connect.php');
     }
     function destroy() {
@@ -44,6 +69,9 @@
             break;
         case 'confirm':
             confirm();
+            break;
+        case 'back':
+            back();
             break;
         case 'destroy':
             $record = destroy();
