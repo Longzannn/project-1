@@ -35,7 +35,7 @@
                             <?php
                                 if(!isset($_SESSION['user_email'])) {
                                     echo "
-                                    <a href='' class='accounts-link'>
+                                    <a href='?controller=login&action=login' class='accounts-link'>
                                         <i class='fa-solid fa-user'></i>
                                         <div class='links-text'>
                                             <span>Tài khoản</span>
@@ -50,7 +50,7 @@
                                     ";
                                 } else {
                                     echo "
-                                    <a href='' class='accounts-link'>
+                                    <a href='?controller=login&action=login' class='accounts-link'>
                                         <i class='fa-solid fa-user'></i>
                                         <div class='links-text'>
                                             <span>Tài khoản</span>

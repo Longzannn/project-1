@@ -35,7 +35,7 @@
                             <?php
                                 if(!isset($_SESSION['user_email'])) {
                                     echo "
-                                    <a href='' class='accounts-link'>
+                                    <a href='?controller=login&action=login' class='accounts-link'>
                                         <i class='fa-solid fa-user'></i>
                                         <div class='links-text'>
                                             <span>Tài khoản</span>
@@ -50,7 +50,7 @@
                                     ";
                                 } else {
                                     echo "
-                                    <a href='' class='accounts-link'>
+                                    <a href='?controller=login&action=login' class='accounts-link'>
                                         <i class='fa-solid fa-user'></i>
                                         <div class='links-text'>
                                             <span>Tài khoản</span>
@@ -61,7 +61,7 @@
                                         <span class='login'><i class='fa-solid fa-user'></i>Tài khoản của tôi</span>
                                         <span class='logout'><a href='?controller=admin'>&diams; Trang quản trị</a></span>
                                         <span class='logout'><i class='fa-solid fa-cart-shopping'></i>Đơn hàng của tôi</span>
-                                        <span class='exit'><i class='fa-solid fa-arrow-right-to-bracket'></i><a href='index.php?controller=login&action=logout'>Thoát</a></span>
+                                        <span class='exit'><i class='fa-solid fa-arrow-right-to-bracket'></i><a href='?controller=login&action=logout'>Thoát</a></span>
                                     </div>
                                     ";
                                 }
