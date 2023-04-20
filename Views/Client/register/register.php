@@ -59,12 +59,17 @@
                             <a href="?redirect=cart" class="cart-link hvr-icon-grow">
                                 <i class="fa fa-shopping-cart"></i>
                             </a>
-                            <span class="quantity">0</span>
-                            <!-- <div class="cart-empty">
-                                <span>Không có sản phẩm trong giỏ hàng!</span>
-                            </div> -->
+                            <?php
+                                if(isset($_SESSION['cart'])) {
+                                    echo '<span class="quantity">!</span>';
+                                } else {
+                                    echo '<div class="cart-empty">
+                                    <span>Không có sản phẩm trong giỏ hàng!</span>
+                                </div>';
+                                }
+                            ?>
 
-                            <div class="cart-products">
+                            <!-- <div class="cart-products">
                                 <div class="list-products-cart">
                                     <table class="table">
                                         <tbody>
@@ -155,7 +160,7 @@
                                         <button type="button" class="btn btn-danger"><a>THANH TOÁN</a></button>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

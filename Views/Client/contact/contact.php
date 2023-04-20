@@ -64,15 +64,20 @@
                             ?>
                         </div>
                         <div class="cart">
-                            <a href="" class="cart-link">
+                            <a href="?redirect=cart" class="cart-link hvr-icon-grow">
                                 <i class="fa fa-shopping-cart"></i>
                             </a>
-                            <span class="quantity">0</span>
-                            <!-- <div class="cart-empty">
-                                <span>Không có sản phẩm trong giỏ hàng!</span>
-                            </div> -->
+                            <?php
+                                if(isset($_SESSION['cart'])) {
+                                    echo '<span class="quantity">!</span>';
+                                } else {
+                                    echo '<div class="cart-empty">
+                                    <span>Không có sản phẩm trong giỏ hàng!</span>
+                                </div>';
+                                }
+                            ?>
 
-                            <div class="cart-products">
+                            <!-- <div class="cart-products">
                                 <div class="list-products-cart">
                                     <table class="table">
                                         <tbody>
@@ -80,7 +85,7 @@
                                                 <td class="td-img" scope="row">
                                                     <img src="https://myshoes.vn/image/cache/catalog/2023/lacoste/112/giay-lacoste-powercourt-1121-nam-den-01-60x60.jpg" alt="">
                                                 </td>
-                                                <td class="td-name">
+                                                <td class="td-name hvr-grow">
                                                     <a>Giày Lacoste PowerCourt 1121 Nam - Đen</a>
                                                     <p>Chọn size nam: 39.5</p>
                                                 </td>
@@ -91,7 +96,7 @@
                                                 <td class="td-img" scope="row">
                                                     <img src="https://myshoes.vn/image/cache/catalog/2023/lacoste/112/giay-lacoste-powercourt-1121-nam-den-01-60x60.jpg" alt="">
                                                 </td>
-                                                <td class="td-name">
+                                                <td class="td-name hvr-grow">
                                                     <a>Giày Lacoste PowerCourt 1121 Nam - Đen</a>
                                                     <p>Chọn size nam: 39.5</p>
                                                 </td>
@@ -102,7 +107,7 @@
                                                 <td class="td-img" scope="row">
                                                     <img src="https://myshoes.vn/image/cache/catalog/2023/lacoste/112/giay-lacoste-powercourt-1121-nam-den-01-60x60.jpg" alt="">
                                                 </td>
-                                                <td class="td-name">
+                                                <td class="td-name hvr-grow">
                                                     <a>Giày Lacoste PowerCourt 1121 Nam - Đen</a>
                                                     <p>Chọn size nam: 39.5</p>
                                                 </td>
@@ -113,7 +118,7 @@
                                                 <td class="td-img" scope="row">
                                                     <img src="https://myshoes.vn/image/cache/catalog/2023/lacoste/112/giay-lacoste-powercourt-1121-nam-den-01-60x60.jpg" alt="">
                                                 </td>
-                                                <td class="td-name">
+                                                <td class="td-name hvr-grow">
                                                     <a>Giày Lacoste PowerCourt 1121 Nam - Đen</a>
                                                     <p>Chọn size nam: 39.5</p>
                                                 </td>
@@ -124,7 +129,7 @@
                                                 <td class="td-img" scope="row">
                                                     <img src="https://myshoes.vn/image/cache/catalog/2023/lacoste/112/giay-lacoste-powercourt-1121-nam-den-01-60x60.jpg" alt="">
                                                 </td>
-                                                <td class="td-name">
+                                                <td class="td-name hvr-grow">
                                                     <a>Giày Lacoste PowerCourt 1121 Nam - Đen</a>
                                                     <p>Chọn size nam: 39.5</p>
                                                 </td>
@@ -135,7 +140,7 @@
                                                 <td class="td-img" scope="row">
                                                     <img src="https://myshoes.vn/image/cache/catalog/2023/lacoste/112/giay-lacoste-powercourt-1121-nam-den-01-60x60.jpg" alt="">
                                                 </td>
-                                                <td class="td-name">
+                                                <td class="td-name hvr-grow">
                                                     <a>Giày Lacoste PowerCourt 1121 Nam - Đen</a>
                                                     <p>Chọn size nam: 39.5</p>
                                                 </td>
@@ -163,7 +168,7 @@
                                         <button type="button" class="btn btn-danger"><a>THANH TOÁN</a></button>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
