@@ -126,7 +126,7 @@
                             </a>
                         </li>
                         <li class="nav-item hvr-fade-for-nav-admin">
-                            <a href="">
+                            <a href="?controller=admin&redirect=order">
                                 <i class="fa-solid fa-list"></i>
                                 <span>Quản lí đơn hàng</span>
                             </a>
