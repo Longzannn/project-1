@@ -678,6 +678,11 @@ input[type=number]
     margin-top: 10px;
 }
 
+.input-payment {
+    height: 30px;
+    font-size: 1.6rem;
+}
+
 /* -----------------Footer-------------------- */
 .col-2-3 {
     flex: 0 0 auto;

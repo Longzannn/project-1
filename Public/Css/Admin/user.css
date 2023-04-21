@@ -51,6 +51,11 @@
     border-radius: 5px;
 }
 
+.btn-action {
+    width: 36px;
+    height: 36px;
+}
+
 th, td, tr {
     vertical-align: middle;
     text-align: center;

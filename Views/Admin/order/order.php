@@ -7,7 +7,7 @@
     <link href="https://myshoes.vn/image/catalog/logo/logo-myshoes-nho.png" rel="icon">
     <title>Quản lí đơn hàng</title>
     <link rel="stylesheet" href="Public/Css/Admin/admin.css">
-    <link rel="stylesheet" href="Public/Css/Admin/user.css">
+    <link rel="stylesheet" href="Public/Css/Admin/user.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="Public/Css/Client/Effects/hover.css">
     <link rel="stylesheet" href="Public/Icons/fontawesome/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -128,24 +128,6 @@
                             <span>Quản lí đơn hàng</span>
                         </a>
                     </li>
-                    <li class="nav-item hvr-fade-for-nav-admin">
-                        <a href="">
-                            <i class="fa-solid fa-list"></i>
-                            <span>Quản lí bình luận</span>
-                        </a>
-                    </li>
-                    <li class="nav-item hvr-fade-for-nav-admin">
-                        <a href="">
-                            <i class="fa-solid fa-list"></i>
-                            <span>Quản lí quảng cáo</span>
-                        </a>
-                    </li>
-                    <li class="nav-item hvr-fade-for-nav-admin">
-                        <a href="">
-                            <i class="fa-solid fa-gear"></i>
-                            <span>Cấu hình</span>
-                        </a>
-                    </li>
                 </ul>
             </div>
 
@@ -213,9 +195,9 @@
                                                     <td><?= $order_detail['price'] ?>₫</td>
                                                     <td><?= $order_detail['user_name'] ?></td>
                                                     <td>
-                                                        <button type="button" class="btn btn-info"><a href="?controller=<?= $controller ?>&redirect=<?= $redirect ?>&action=confirm&orders_id=<?= $order_detail['orders_id'] ?>">&radic;</a></button>
-                                                        <button type="button" class="btn btn-info"><a href="?controller=<?= $controller ?>&redirect=<?= $redirect ?>&action=back&orders_id=<?= $order_detail['orders_id'] ?>">&crarr;</a></button>
-                                                        <button type="button" class="btn btn-danger"><a href="?controller=<?= $controller ?>&redirect=<?= $redirect ?>&action=destroy&orders_id=<?= $order_detail['orders_id'] ?>&prd_detail_id=<?= $order_detail['prd_detail_id'] ?>&cus_id=<?= $order_detail['cus_id'] ?>">X</a></button>
+                                                        <button type="button" class="btn btn-info btn-action"><a href="?controller=<?= $controller ?>&redirect=<?= $redirect ?>&action=confirm&orders_id=<?= $order_detail['orders_id'] ?>">&radic;</a></button>
+                                                        <button type="button" class="btn btn-info btn-action"><a href="?controller=<?= $controller ?>&redirect=<?= $redirect ?>&action=back&orders_id=<?= $order_detail['orders_id'] ?>">&crarr;</a></button>
+                                                        <button type="button" class="btn btn-danger btn-action"><a href="?controller=<?= $controller ?>&redirect=<?= $redirect ?>&action=destroy&orders_id=<?= $order_detail['orders_id'] ?>&prd_detail_id=<?= $order_detail['prd_detail_id'] ?>&cus_id=<?= $order_detail['cus_id'] ?>">X</a></button>
                                                     </td>
                                                 </tr>
                                                 <?php

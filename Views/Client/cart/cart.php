@@ -309,15 +309,15 @@
                                     <div class="form-info">
                                         <div class="form-group">
                                             <label>Họ & Tên</label>
-                                            <input name="customer_name" required class="form-control" placeholder="">
+                                            <input name="customer_name" required class="form-control input-payment" placeholder="">
                                         </div>
                                         <div class="form-group">
                                             <label>Số Điện Thoại</label>
-                                            <input name="customer_phone" required class="form-control">
+                                            <input name="customer_phone" required class="form-control input-payment">
                                         </div>
                                         <div class="form-group">
                                             <label>Địa Chỉ</label>
-                                            <input name="customer_address" required class="form-control">
+                                            <input name="customer_address" required class="form-control input-payment">
                                         </div>
                                     </div>
                                 </div>

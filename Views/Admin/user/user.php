@@ -128,24 +128,7 @@
                             <span>Quản lí đơn hàng</span>
                         </a>
                     </li>
-                    <li class="nav-item hvr-fade-for-nav-admin">
-                        <a href="">
-                            <i class="fa-solid fa-list"></i>
-                            <span>Quản lí bình luận</span>
-                        </a>
-                    </li>
-                    <li class="nav-item hvr-fade-for-nav-admin">
-                        <a href="">
-                            <i class="fa-solid fa-list"></i>
-                            <span>Quản lí quảng cáo</span>
-                        </a>
-                    </li>
-                    <li class="nav-item hvr-fade-for-nav-admin">
-                        <a href="">
-                            <i class="fa-solid fa-gear"></i>
-                            <span>Cấu hình</span>
-                        </a>
-                    </li>
+                    
                 </ul>
             </div>
 
