@@ -6,10 +6,10 @@
   <a href="https://github.com/longzannn/shoe-store">
     <img alt="Stars" src="https://badgen.net/github/stars/longzannn/shoe-store">
   </a>
-  <a href="https://github.com/longzannn/website-laptop">
+  <a href="https://github.com/longzannn/shoe-store">
     <img alt="Forks" src="https://badgen.net/github/forks/longzannn/shoe-store">
   </a>
-  <a href="https://github.com/longzannn/website-laptop/issues">
+  <a href="https://github.com/longzannn/shoe-store/issues">
     <img alt="Issues" src="https://badgen.net/github/issues/longzannn/shoe-store">
   </a>
 </p>
